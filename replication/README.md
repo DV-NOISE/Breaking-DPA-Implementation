@@ -58,7 +58,7 @@ python replication/run_all_tests.py
 [10/10] Visuals: Extract PDF Graphics & Plot Fig 2, 4   [+] PASS (4.02s)
        --> Extracts vector PDF graphics and plots pipeline inertia
 ================================================================================
-Total Execution Time: ~28s  --  [+] ALL 10 TESTS PASSED (100% Verified)
+Total Execution Time: ~28s  --  [+] ALL 10 TESTS PASSED (All Automated Checks Pass)
 ```
 
 ---

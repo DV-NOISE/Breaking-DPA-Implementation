@@ -181,13 +181,15 @@ replication/
 │
 ├── reproduce_hardware_figures.py # Script generating Figures 1, 3, and Table 2
 ├── extract_paper_figures.py      # Script extracting PDF graphics & generating Figures 2, 4
-├── SUPERVISOR_PRESENTATION_DOSSIER.md # Local copy of presentation dossier
 └── README.md                     # Quick-start demonstration guide
 ```
 
 ---
 
 ## 3. Detailed Meaning, Research Purpose & Replication of Each Figure
+
+> [!NOTE]
+> **Visualization Disclaimer**: Figures 1–4 below are visual recreations matching the paper's published shapes and empirical values for presentation and pedagogical purposes; they are not derived from independent hardware measurements or from this repository's synthetic software emulator.
 
 Every figure in this study addresses a specific physical, mathematical, or empirical question in side-channel analysis. Below is the detailed breakdown of what each figure means, why it was plotted, and how we replicated it:
 
@@ -299,7 +301,7 @@ Every figure in this study addresses a specific physical, mathematical, or empir
 - **Physical & Visual Meaning**:
   - A comparative benchmark contrasting this attack with prior state-of-the-art side-channel attacks on Kyber (Primas et al. [28], Ravi et al. [44]).
 - **Why It Has Been Tabulated**:
-  - **Highlighting Academic Novelty**: Prior attacks either targeted unmasked implementations, required hundreds of target traces ($200$ traces for Primas et al.), or left an astronomically infeasible brute-force search space ($2^{40}$ for Ravi et al.). Table 2 proves this work is the **first single-trace attack on first-order masked Kyber that completely recovers the key with zero remaining brute force**.
+  - **Academic Novelty & Scope Alignment**: Table 2 shows this is the first single-trace attack on first-order masked Kyber, distinguishing our simulation-based template counts ($6,628$ for $q+q$, $11.08\text{M}$ for $q^2$) from the paper's real hardware requirement ($78\text{M}$ templates for $43\%$ success, $105\text{M}$ for $90\%$ success via combined $q^2+\text{OTA}$) — unlike Ravi et al.'s infeasible $2^{40}$ remaining search space, this attack's remaining work is bounded and tractable, though not zero.
 
 ---
 
@@ -621,7 +623,7 @@ Visuals    Extract PDF Graphics & Plot Fig 2, 4   [+] PASS   4.75    s
 ================================================================================
 Total Execution Time: ~30.5s
 
-[+] ALL TESTS PASSED SUCCESSFULLY! The repository is 100% verified.
+[+] ALL TESTS PASSED SUCCESSFULLY! All automated replication checks passed.
 ```
 
 ---

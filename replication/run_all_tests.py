@@ -136,7 +136,7 @@ def main():
     print(f"Total Execution Time: {total_duration:.2f}s")
     
     if all_passed:
-        print("\n[+] ALL TESTS PASSED SUCCESSFULLY! The repository is 100% verified.")
+        print("\n[+] ALL TESTS PASSED SUCCESSFULLY! All automated replication checks passed.")
         sys.exit(0)
     else:
         print("\n[!] SOME TESTS FAILED. Please review the error log above.")

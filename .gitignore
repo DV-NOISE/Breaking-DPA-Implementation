@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and Editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+pyrightconfig.json
+compile_flags.txt
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Scratch and intermediate outputs
+*.tmp
+temp_*.csv
+temp_*.txt
+scratch/

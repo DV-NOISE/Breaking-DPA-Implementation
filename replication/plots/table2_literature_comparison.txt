@@ -1,0 +1,13 @@
+
+===================================================================================================================
+                                TABLE 2: COMPARISON OF ATTACKS ON MASKED KYBER768
+===================================================================================================================
+Work           Implementation        Target Traces    Templates Required       Target Phase      Remaining Brute-Force
+-------------------------------------------------------------------------------------------------------------------
+Primas [28]    Non-masked pqm4       200              0 (DPA/CPA)              Decapsulation     No
+Ravi [44]      Non-masked pqm4       1                7,000 - 896,000          Key Generation    Yes (infeasible-2^40)
+This Work      Masked mkm4 (1st-ord) 1                6,628 (q+q attack)       Decapsulation     No
+(Simulation)                                          11,082,241 (q^2 attack)
+This Work      Masked mkm4 (1st-ord) 1                78M (43% SR)             Decapsulation     No (with OTA)
+(Experiment)                                          105M (90% SR)
+===================================================================================================================

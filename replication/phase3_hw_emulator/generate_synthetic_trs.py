@@ -141,7 +141,7 @@ class SyntheticTraceGenerator:
         headers = {
             trsfile.Header.TRS_VERSION: 2,
             trsfile.Header.SAMPLE_CODING: trsfile.SampleCoding.FLOAT,
-            trsfile.Header.NUMBER_TRACES: num_traces,
+            trsfile.Header.NUMBER_TRACES: 0,
             trsfile.Header.NUMBER_SAMPLES: self.num_samples,
             trsfile.Header.SCALE_X: 1.0,
             trsfile.Header.SCALE_Y: 1.0,
@@ -200,6 +200,25 @@ def main():
     print("  Secret Key (First 16, raw mod 3329):   ", " ".join(f"{x:4d}" for x in true_secret[:16]))
     print("  Public Ciphertext b (First 16):         ", " ".join(f"{x:4d}" for x in public_b[:16]))
     print("-" * 70)
+    # Save waveform preview plot
+    try:
+        import matplotlib.pyplot as plt
+        preview_png = os.path.join(os.path.dirname(os.path.abspath(__file__)), "trace_preview.png")
+        plt.figure(figsize=(10, 3.5), dpi=150)
+        for i in range(min(3, len(target_traces))):
+            plt.plot(target_traces[i], label=f"Synthetic Trace {i}", alpha=0.8, linewidth=0.8)
+        plt.title("Synthetic Cortex-M4 Power Trace Preview (synthetic_target_15.trs, 9148 samples)")
+        plt.xlabel("Sample Index (Time)")
+        plt.ylabel("Simulated Amplitude (Power/EM)")
+        plt.legend(loc="upper right")
+        plt.grid(True, alpha=0.3)
+        plt.tight_layout()
+        plt.savefig(preview_png)
+        plt.close()
+        print(f"[+] Saved waveform preview plot to {preview_png}")
+    except Exception as e:
+        pass
+
     print("[i] To view the full dataset: python replication/phase3_hw_emulator/view_target.py")
     print("="*70 + "\n")
 

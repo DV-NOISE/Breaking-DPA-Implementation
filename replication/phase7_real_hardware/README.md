@@ -53,20 +53,19 @@ All files in the dataset are distributed as chunked NumPy (`.npy`) arrays:
 3. **Empirical SNR & TVLA Characterization ([`compute_real_snr.py`](load_dataset.py))**:
    - Computes Signal-to-Noise Ratio (SNR) on Share 0 ($M$) and Share 1 ($sk - M$).
    - Pointwise fixed-vs-variable Welch's t-test (TVLA) across EM time samples.
-   - Output plots:
+#### Per-Share Physical Signal-to-Noise Ratio (SNR) on STM32F407 (`snr_mkm4_shares.png`)
+[![Per-Share SNR Analysis](plots/snr_mkm4_shares.png)](plots/snr_mkm4_shares.png)
 
-| Per-Share SNR across 10,000 Samples (`snr_mkm4_shares.png`) | Full 10,000-Sample Welch's t-test TVLA (`tvla_full_10k.png`) |
-| :---: | :---: |
-| ![Per-Share SNR Analysis](plots/snr_mkm4_shares.png) | ![Full TVLA Curve](plots/tvla_full_10k.png) |
+#### Full 10,000-Sample Welch's t-test TVLA Curve (`tvla_full_10k.png`)
+[![Full TVLA Curve](plots/tvla_full_10k.png)](plots/tvla_full_10k.png)
 
 4. **Phase E: Unmasked `pqm4` 1st-Order CPA ([`run_pqm4_cpa.py`](run_pqm4_cpa.py))**:
    - Targets Cortex-M4 assembly accumulator intermediate $HW_{32}(a_0 \cdot b_0 + \text{mont\_red}(a_1 \cdot \zeta_0) \cdot b_1)$ at POI sample 1568.
    - Eliminates single-operand ghost peaks and reproduces ~40-trace convergence (Mean rank $2.90 \pm 2.23$ at $N=40$; 70% Rank 0 at $N=60$).
    - Regression test: `test_pqm4_cpa_regression.py` (Step 15 in master suite).
 
-| Unmasked `pqm4` CPA Convergence (`pqm4_cpa_convergence.png`) |
-| :---: |
-| ![Unmasked CPA](plots/pqm4_cpa_convergence.png) |
+#### Unmasked `pqm4` Physical Accumulator CPA (`pqm4_cpa_convergence.png`)
+[![Unmasked CPA](plots/pqm4_cpa_convergence.png)](plots/pqm4_cpa_convergence.png)
 
 5. **Phase D: Masked `mkm4` 2nd-Order CPA ([`run_mkm4_2nd_order_cpa.py`](run_mkm4_2nd_order_cpa.py))**:
    - 3-sample smoothed centered cross-product at joint POI sample 299: $P_i = (T_{0, i} - \mu_0) \times (T_{1, i} - \mu_1)$.
@@ -74,9 +73,8 @@ All files in the dataset are distributed as chunked NumPy (`.npy`) arrays:
    - Recovers target key $b[1] = 1422$ at **Rank 0 at $N = 180, 200, 250, 300$ traces** (True Corr = 0.3066 vs Max Wrong = 0.3040 at $N=200$).
    - Regression test: `test_mkm4_cpa_regression.py` (Step 16 in master suite).
 
-| Masked `mkm4` 2nd-Order CPA Convergence (`mkm4_2nd_order_cpa_convergence.png`) |
-| :---: |
-| ![Masked CPA](plots/mkm4_2nd_order_cpa_convergence.png) |
+#### Masked `mkm4` 2nd-Order Covariance CPA (`mkm4_2nd_order_cpa_convergence.png`)
+[![Masked CPA](plots/mkm4_2nd_order_cpa_convergence.png)](plots/mkm4_2nd_order_cpa_convergence.png)
 
 6. **Phase F: Learned Combining Function ([`run_learned_combiner.py`](run_learned_combiner.py))**:
    - Two-Branch Neural Network trained with Adam on Pearson correlation loss using variable-key traces (`100k_capture_all_2`).
@@ -84,9 +82,8 @@ All files in the dataset are distributed as chunked NumPy (`.npy`) arrays:
    - Outperforms baseline CPA at $N = 220$ (Learned Rank 0 vs Baseline Rank 1) with 8$\times$ higher Rank-0 rate under resampling.
    - Regression test: `test_learned_combiner_regression.py` (Step 18 in master suite).
 
-| Learned Combining Function Neural Network vs. Baseline (`learned_combiner_vs_baseline.png`) |
-| :---: |
-| ![Learned Combiner](plots/learned_combiner_vs_baseline.png) |
+#### Two-Branch Neural Network Learned Combiner vs. Classical CPA (`learned_combiner_vs_baseline.png`)
+[![Learned Combiner](plots/learned_combiner_vs_baseline.png)](plots/learned_combiner_vs_baseline.png)
 
 ---
 

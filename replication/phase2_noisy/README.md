@@ -33,13 +33,14 @@ To ensure complete academic transparency, this repository contains three distinc
 | $q^2$ | 0.9 | 0.4003 / **0.3000** | 0.6409 / **0.4240** | 0.7672 / **0.4820** | **$5.5670 \times 10^{-56}$** |
 | $q^2$ | 1.0 | 0.2995 / **0.2360** | 0.5115 / **0.3320** | 0.6436 / **0.4020** | **$6.4678 \times 10^{-79}$** |
 
-| Figure 6: Single-Coefficient $q$-Templates | Figure 7: Joint-Coefficient $q^2$-Templates |
-| :---: | :---: |
-| ![Figure 6: q-Templates](plots/figure6_q_candidates.png) | ![Figure 7: q2-Templates](plots/figure7_q2_candidates.png) |
+#### Figure 6: Single-Coefficient $q$-Templates ($3,329$ candidates per root)
+[![Figure 6: q-Templates](plots/figure6_q_candidates.png)](plots/figure6_q_candidates.png)
 
-| Figure 7: Independent Full-Scale Monte Carlo ($N=2,500$ Trials/$\sigma$) |
-| :---: |
-| ![Figure 7 Independent](plots/figure7_q2_independent.png) |
+#### Figure 7: Joint-Coefficient $q^2$-Templates ($11.08 \times 10^6$ candidates per root)
+[![Figure 7: q2-Templates](plots/figure7_q2_candidates.png)](plots/figure7_q2_candidates.png)
+
+#### Figure 7: Independent Full-Scale Monte Carlo ($N=2,500$ Trials/$\sigma$)
+[![Figure 7 Independent](plots/figure7_q2_independent.png)](plots/figure7_q2_independent.png)
 
 ---
 

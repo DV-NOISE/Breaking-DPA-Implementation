@@ -49,7 +49,8 @@ Under Gaussian measurement noise, the attacker's Top-1 candidate recovery rate i
 | **0.9** | 0.4003 (40.0%) | **0.0003 (0.03%)** | 0.0300 (3.00%) | **> 1,300x** |
 | **1.0** | 0.2995 (30.0%) | **0.0003 (0.03%)** | 0.0300 (3.00%) | **> 1,000x** |
 
-![Polynomial Blinding Collision Collapse](plots/blinding_comparison.png)
+[![Polynomial Blinding Collision Collapse](plots/blinding_comparison.png)](plots/blinding_comparison.png)
+*Figure: Top-k candidate match probability collapse under increasing Gaussian noise with scalar polynomial blinding.*
 
 ---
 
@@ -81,7 +82,8 @@ To formally evaluate side-channel resistance according to ISO/IEC 17825 standard
   - Leaking Points ($|t| > 4.5$): **0 / 33 temporal samples**
   - Evaluation: **PASS (Zero Detectable Side-Channel Leakage)**
 
-![TVLA Comparison Plot](plots/tvla_unblinded_vs_blinded.png)
+[![TVLA Comparison Plot](plots/tvla_unblinded_vs_blinded.png)](plots/tvla_unblinded_vs_blinded.png)
+*Figure: Non-specific fixed-vs-random Welch's t-test showing unblinded baseline leaking ($|t| = 18.62$) and blinding countermeasure passing ($|t| = 2.54 \le 4.5$).*
 
 ---
 

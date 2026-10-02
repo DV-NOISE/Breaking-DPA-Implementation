@@ -243,9 +243,11 @@ Every figure in this study addresses a specific physical, mathematical, or empir
 
 ### Figure 1: Oscilloscope EM Trace Characterization
 
-| Original Published Figure (ACNS 2024, Page 24) | Replicated Oscilloscope Waveform (`figure1_trace_characterization.png`) |
-| :---: | :---: |
-| ![Original Figure 1](replication/plots/paper_original_figures/figure1_characterization_original.png) | ![Replicated Figure 1](replication/plots/figure1_trace_characterization.png) |
+#### Published Author Baseline (ACNS 2024, Page 24)
+[![Original Figure 1](replication/plots/paper_original_figures/figure1_characterization_original.png)](replication/plots/paper_original_figures/figure1_characterization_original.png)
+
+#### Replicated Oscilloscope Waveform (`figure1_trace_characterization.png`)
+[![Replicated Figure 1](replication/plots/figure1_trace_characterization.png)](replication/plots/figure1_trace_characterization.png)
 
 - **Physical & Visual Meaning**:
   - Depicts raw electromagnetic radiation waveforms measured over a ~300-sample window ($1\,\text{GS/s}$) by a Langer near-field EM probe placed over the STM32F4 microcontroller die during decapsulation.
@@ -264,9 +266,11 @@ Every figure in this study addresses a specific physical, mathematical, or empir
 
 ### Figure 2: Pipeline Register Inertia & Accumulator Residue
 
-| Original Published Figure (ACNS 2024, Page 24) | Replicated Pipeline Inertia Model (`figure2_pipeline_inertia_reproduced.png`) |
-| :---: | :---: |
-| ![Original Figure 2](replication/plots/paper_original_figures/figure2_previous_mult_effect_original.png) | ![Replicated Figure 2](replication/plots/figure2_pipeline_inertia_reproduced.png) |
+#### Published Author Baseline (ACNS 2024, Page 24)
+[![Original Figure 2](replication/plots/paper_original_figures/figure2_previous_mult_effect_original.png)](replication/plots/paper_original_figures/figure2_previous_mult_effect_original.png)
+
+#### Replicated Pipeline Inertia Model (`figure2_pipeline_inertia_reproduced.png`)
+[![Replicated Figure 2](replication/plots/figure2_pipeline_inertia_reproduced.png)](replication/plots/figure2_pipeline_inertia_reproduced.png)
 
 - **Physical & Visual Meaning**:
   - A dual-layer time-series diagram over 250 clock cycles:
@@ -287,9 +291,11 @@ Every figure in this study addresses a specific physical, mathematical, or empir
 
 ### Figure 3: Multiplication Success Rate across Loop Iterations ($1 \dots 127$)
 
-| Original Published Figure (ACNS 2024, Page 25) | Replicated Running Cumulative Success Rate (`figure3_mult_success_rate.png`) |
-| :---: | :---: |
-| ![Original Published Figure 3](replication/plots/paper_original_figures/figure3_q2_success_rate_original.png) | ![Replicated Figure 3](replication/plots/figure3_mult_success_rate.png) |
+#### Published Author Baseline (ACNS 2024, Page 25)
+[![Original Published Figure 3](replication/plots/paper_original_figures/figure3_q2_success_rate_original.png)](replication/plots/paper_original_figures/figure3_q2_success_rate_original.png)
+
+#### Replicated Running Cumulative Success Rate (`figure3_mult_success_rate.png`)
+[![Replicated Figure 3](replication/plots/figure3_mult_success_rate.png)](replication/plots/figure3_mult_success_rate.png)
 
 - **Physical & Visual Meaning**:
   - Plots the attack success rate percentage ($30\% - 100\%$) across the 128 pair multiplications of the Kyber-768 polynomial ($m=1 \dots 127$) for:
@@ -307,9 +313,11 @@ Every figure in this study addresses a specific physical, mathematical, or empir
 
 ### Figure 4: One-Trace Attack (OTA) Profiling Budget & Trace Distribution
 
-| Original Published Figure (ACNS 2024, Page 26) | Replicated OTA Analysis Curve & Distribution (`figure4_ota_attack_reproduced.png`) |
-| :---: | :---: |
-| ![Original Published Figure 4](replication/plots/paper_original_figures/figure4_ota_attack_analysis_original.png) | ![Replicated Figure 4](replication/plots/figure4_ota_attack_reproduced.png) |
+#### Published Author Baseline (ACNS 2024, Page 26)
+[![Original Published Figure 4](replication/plots/paper_original_figures/figure4_ota_attack_analysis_original.png)](replication/plots/paper_original_figures/figure4_ota_attack_analysis_original.png)
+
+#### Replicated OTA Analysis Curve & Distribution (`figure4_ota_attack_reproduced.png`)
+[![Replicated Figure 4](replication/plots/figure4_ota_attack_reproduced.png)](replication/plots/figure4_ota_attack_reproduced.png)
 
 - **Physical & Visual Meaning**:
   - A two-panel evaluation of the One-Trace Attack's template profiling complexity:
@@ -353,9 +361,11 @@ Every figure in this study addresses a specific physical, mathematical, or empir
 
 ### Figures 6 & 7: Noise Sensitivity Curves ($q$ vs. $q^2$ Templates)
 
-| Figure 6: Single-Coefficient $q$-Templates | Figure 7: Joint-Coefficient $q^2$-Templates |
-| :---: | :---: |
-| ![Figure 6: q-Templates](replication/phase2_noisy/plots/figure6_q_candidates.png) | ![Figure 7: q2-Templates](replication/phase2_noisy/plots/figure7_q2_candidates.png) |
+#### Figure 6: Single-Coefficient $q$-Templates ($3,329$ Templates per Root)
+[![Figure 6: q-Templates](replication/phase2_noisy/plots/figure6_q_candidates.png)](replication/phase2_noisy/plots/figure6_q_candidates.png)
+
+#### Figure 7: Joint-Coefficient $q^2$-Templates ($11.08 \times 10^6$ Templates per Root)
+[![Figure 7: q2-Templates](replication/phase2_noisy/plots/figure7_q2_candidates.png)](replication/phase2_noisy/plots/figure7_q2_candidates.png)
 
 - **Physical & Visual Meaning**:
   - Curves tracking the degradation of candidate match probabilities (Top 1, 2, 3, 10, 100) as Gaussian measurement noise standard deviation $\sigma$ increases from $0.0$ to $1.0$:
@@ -470,9 +480,11 @@ $$L(t) = \alpha \cdot \text{HW}(V_{\text{current}}) + \beta \cdot \text{HW}(V_{\
 
 ### 5. Waveform Visualizations: Synthetic Emulator vs. Physical Capture
 
-| Synthetic Emulated Power Trace (`trace_preview.png`) | Physical Silicon Oscilloscope Acquisition (`trace_visualization.png`) |
-| :---: | :---: |
-| ![Synthetic Trace Preview](replication/phase3_hw_emulator/trace_preview.png) | ![Physical Reference Trace](replication/phase3_hw_emulator/trace_visualization.png) |
+#### Synthetic Emulated Power Trace Preview (`trace_preview.png`)
+[![Synthetic Trace Preview](replication/phase3_hw_emulator/trace_preview.png)](replication/phase3_hw_emulator/trace_preview.png)
+
+#### Physical Silicon Oscilloscope Acquisition (`trace_visualization.png`)
+[![Physical Reference Trace](replication/phase3_hw_emulator/trace_visualization.png)](replication/phase3_hw_emulator/trace_visualization.png)
 
 - **Synthetic Power Trace Preview ([`replication/phase3_hw_emulator/trace_preview.png`](replication/phase3_hw_emulator/trace_preview.png))**: Waveform preview generated by our cycle-accurate Python emulator [`generate_synthetic_trs.py`](replication/phase3_hw_emulator/generate_synthetic_trs.py). Contains 9,148 temporal samples across all 128 NTT pair-pointwise multiplications, modeling 13 intermediate Hamming weight states, dynamic pipeline inertia, and calibrated Gaussian noise ($\sigma = 0.012$).
 - **Physical Silicon Acquisition ([`replication/phase3_hw_emulator/trace_visualization.png`](replication/phase3_hw_emulator/trace_visualization.png))**: Real electromagnetic measurements captured by the paper's authors using a Langer near-field EM probe placed over the STM32F4 microcontroller die during hardware decapsulation (`Attack_Kyber_ACNS2024/attack/traces_example.trs`).
@@ -703,9 +715,11 @@ We evaluated blinding across three rigorous dimensions:
 | **Leaking POIs ($|t| > 4.5$)** | 8 / 33 POIs | **0 / 33 POIs** | 100% Suppression |
 | **Decapsulation Overhead** | Baseline (0%) | **+0.31%** (+14 ops/pair) | Extremely Lightweight |
 
-| Polynomial Blinding Collision Collapse (`blinding_comparison.png`) | Fixed-vs-Random TVLA Validation (`tvla_unblinded_vs_blinded.png`) |
-| :---: | :---: |
-| ![Polynomial Blinding Comparison](replication/phase6_countermeasures/plots/blinding_comparison.png) | ![TVLA Validation](replication/phase6_countermeasures/plots/tvla_unblinded_vs_blinded.png) |
+#### Polynomial Blinding Collision Collapse & Noisy Sweep (`blinding_comparison.png`)
+[![Polynomial Blinding Comparison](replication/phase6_countermeasures/plots/blinding_comparison.png)](replication/phase6_countermeasures/plots/blinding_comparison.png)
+
+#### Fixed-vs-Random TVLA Validation across 33 POIs (`tvla_unblinded_vs_blinded.png`)
+[![TVLA Validation](replication/phase6_countermeasures/plots/tvla_unblinded_vs_blinded.png)](replication/phase6_countermeasures/plots/tvla_unblinded_vs_blinded.png)
 
 ---
 
@@ -726,23 +740,28 @@ We implemented memory-mapped zero-copy loaders ([`load_dataset.py`](replication/
 - **Share 1 (Masked Key $sk - M$):** Peak $\text{SNR} = \mathbf{0.4332}$ at sample 472.
 The distinct temporal displacement reflects the sequential execution of the two shares in the assembly loop.
 
-| Per-Share SNR across 10,000 Samples (`snr_mkm4_shares.png`) | Full 10,000-Sample Welch's t-test TVLA Curve (`tvla_full_10k.png`) |
-| :---: | :---: |
-| ![Per-Share SNR Analysis](replication/phase7_real_hardware/plots/snr_mkm4_shares.png) | ![Full TVLA Curve](replication/phase7_real_hardware/plots/tvla_full_10k.png) |
+#### Per-Share Physical Signal-to-Noise Ratio (SNR) on STM32F407 (`snr_mkm4_shares.png`)
+[![Per-Share SNR Analysis](replication/phase7_real_hardware/plots/snr_mkm4_shares.png)](replication/phase7_real_hardware/plots/snr_mkm4_shares.png)
+
+#### Full 10,000-Sample Welch's t-test TVLA Curve (`tvla_full_10k.png`)
+[![Full TVLA Curve](replication/phase7_real_hardware/plots/tvla_full_10k.png)](replication/phase7_real_hardware/plots/tvla_full_10k.png)
 
 ### 10.3 Physical Correlation Power Analysis (CPA) Attacks
 1. **Unmasked `pqm4` Physical Accumulator CPA**:
    - Targets the 32-bit accumulator switching intermediate ($HW_{32}(a_0 b_0 + \text{mont\_red}(a_1 \zeta_0) b_1)$) at sample 1568 (peak $|r| = 0.5638$).
    - Converges to key recovery in $\approx 40$ traces: mean rank $5.92 \pm 1.61$ and 37.5% Rank-0 at $N=40$, reaching 68.0% Rank-0 with mean rank $0.94 \pm 0.27$ at $N=100$.
+
+#### Unmasked `pqm4` Physical Accumulator CPA (`pqm4_cpa_convergence.png`)
+[![Unmasked CPA](replication/phase7_real_hardware/plots/pqm4_cpa_convergence.png)](replication/phase7_real_hardware/plots/pqm4_cpa_convergence.png)
+
 2. **Masked `mkm4` 2nd-Order Covariance CPA**:
    - Accelerated via an $O(q \log q)$ circular FFT covariance model evaluating all 3,329 hypotheses in $<50\,\mu\text{s}/\text{trace}$.
    - Combined with a 3-sample moving-average filter around sample 299 to mitigate sub-sample clock jitter, sequential acquisition achieves **Rank 0 recovery at $N = 180$ traces** ($r_{\text{true}} = 0.3374$ vs. $r_{\text{wrong}} = 0.3349$, margin $+0.0026$), converging to 52.0% Rank-0 at $N = 500$ under random resampling.
 3. **Formal Goodness-of-Fit Negative Controls**:
    - Permuted trace pairing collapses correlation to $|r| < 0.05$ (Rank > 1,500), and quiet off-target baseline sample windows show zero statistical correlation, verifying that recovery is mathematically genuine and free of phantom artifacts.
 
-| Unmasked `pqm4` CPA Convergence (`pqm4_cpa_convergence.png`) | Masked `mkm4` 2nd-Order CPA Convergence (`mkm4_2nd_order_cpa_convergence.png`) |
-| :---: | :---: |
-| ![Unmasked CPA](replication/phase7_real_hardware/plots/pqm4_cpa_convergence.png) | ![Masked CPA](replication/phase7_real_hardware/plots/mkm4_2nd_order_cpa_convergence.png) |
+#### Masked `mkm4` 2nd-Order Covariance CPA (`mkm4_2nd_order_cpa_convergence.png`)
+[![Masked CPA](replication/phase7_real_hardware/plots/mkm4_2nd_order_cpa_convergence.png)](replication/phase7_real_hardware/plots/mkm4_2nd_order_cpa_convergence.png)
 
 ### 10.4 Novel Machine Learning Combining Function Extension
 Classical second-order CPA relies on a hand-crafted cross-product combining function ($|T(t_1) - T(t_2)|$). We trained a lightweight **Two-Branch Neural Network** (1,285 parameters) under a Pearson correlation objective on variable-key decapsulations to learn the non-linear share combining function directly from raw EM emissions:
@@ -750,9 +769,8 @@ Classical second-order CPA relies on a hand-crafted cross-product combining func
 - **Robust Against Physical Drift**: Sustains Sequential Rank 0 throughout $N \in [180, 250]$ where classical CPA slips to Sequential Rank 1 due to physical noise drift.
 - **Superior Convergence**: Drives mean rank down to $0.52 \pm 0.14$ at $N = 500$ (48.0% Rank-0).
 
-| Two-Branch Neural Network Combiner vs. Classical 2nd-Order CPA (`learned_combiner_vs_baseline.png`) |
-| :---: |
-| ![Learned Combiner Comparison](replication/phase7_real_hardware/plots/learned_combiner_vs_baseline.png) |
+#### Two-Branch Neural Network Learned Combiner vs. Classical CPA (`learned_combiner_vs_baseline.png`)
+[![Learned Combiner Comparison](replication/phase7_real_hardware/plots/learned_combiner_vs_baseline.png)](replication/phase7_real_hardware/plots/learned_combiner_vs_baseline.png)
 
 ---
 

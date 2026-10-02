@@ -89,20 +89,26 @@ Total Execution Time: ~45s  --  [+] ALL 18 TESTS PASSED
 
 ---
 
-## 🎨 Visual Gallery
+## 🎨 Key Visual Highlights
 
-All 15 publication figures are centralized in [`replication/plots/`](plots/README.md):
+All 15 publication figures are centralized with full explanations in the [Master Figures Gallery (`replication/plots/README.md`)](plots/README.md). Click on any image below to view it in full resolution:
 
-| Figure 1: Oscilloscope EM Trace | Figure 2: Pipeline Register Inertia |
-| :---: | :---: |
-| ![Figure 1](plots/figure1_trace_characterization.png) | ![Figure 2](plots/figure2_pipeline_inertia_reproduced.png) |
+#### Figure 1: Physical Oscilloscope Waveform Characterization
+[![Figure 1](plots/figure1_trace_characterization.png)](plots/figure1_trace_characterization.png)
 
-| Phase 6: Polynomial Blinding TVLA | Phase 7: Real Silicon SNR on Cortex-M4 |
-| :---: | :---: |
-| ![Phase 6 TVLA](plots/phase6_tvla_unblinded_vs_blinded.png) | ![Phase 7 SNR](plots/phase7_snr_mkm4_shares.png) |
+#### Figure 2: Cortex-M4 Pipeline Register Inertia Breakdown
+[![Figure 2](plots/figure2_pipeline_inertia_reproduced.png)](plots/figure2_pipeline_inertia_reproduced.png)
 
-| Phase 7: Masked `mkm4` 2nd-Order CPA Convergence | Phase 7: Two-Branch NN Learned Combiner |
-| :---: | :---: |
-| ![MKM4 CPA](plots/phase7_mkm4_2nd_order_cpa_convergence.png) | ![Learned Combiner](plots/phase7_learned_combiner_vs_baseline.png) |
+#### Phase 6: Fixed-vs-Random TVLA Validation (ISO/IEC 17825)
+[![Phase 6 TVLA](plots/phase6_tvla_unblinded_vs_blinded.png)](plots/phase6_tvla_unblinded_vs_blinded.png)
 
-For complete plot descriptions, consult the [Master Figures Gallery](plots/README.md).
+#### Phase 7: Real-Hardware Per-Share SNR on STM32F407
+[![Phase 7 SNR](plots/phase7_snr_mkm4_shares.png)](plots/phase7_snr_mkm4_shares.png)
+
+#### Phase 7: Masked `mkm4` 2nd-Order CPA Convergence
+[![MKM4 CPA](plots/phase7_mkm4_2nd_order_cpa_convergence.png)](plots/phase7_mkm4_2nd_order_cpa_convergence.png)
+
+#### Phase 7: Two-Branch Neural Network Learned Combiner vs. Classical CPA
+[![Learned Combiner](plots/phase7_learned_combiner_vs_baseline.png)](plots/phase7_learned_combiner_vs_baseline.png)
+
+For complete plot descriptions and all 15 figures, consult the [Master Figures Gallery](plots/README.md).

@@ -703,6 +703,10 @@ We evaluated blinding across three rigorous dimensions:
 | **Leaking POIs ($|t| > 4.5$)** | 8 / 33 POIs | **0 / 33 POIs** | 100% Suppression |
 | **Decapsulation Overhead** | Baseline (0%) | **+0.31%** (+14 ops/pair) | Extremely Lightweight |
 
+| Polynomial Blinding Collision Collapse (`blinding_comparison.png`) | Fixed-vs-Random TVLA Validation (`tvla_unblinded_vs_blinded.png`) |
+| :---: | :---: |
+| ![Polynomial Blinding Comparison](replication/phase6_countermeasures/plots/blinding_comparison.png) | ![TVLA Validation](replication/phase6_countermeasures/plots/tvla_unblinded_vs_blinded.png) |
+
 ---
 
 ## 9. Physical Silicon EM Validation & Learned Combining Function (Phase 7)
@@ -716,11 +720,15 @@ To bridge the gap between idealized simulation and physical hardware, we evaluat
 - **Dataset Scale**: 12.57 GB total archive comprising unmasked (`pqm4`), masked (`mkm4`), fixed-key, and variable-key captures. Verified against SHA-256 hash `4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143`.
 - **Zero-Setup Verification Slice**: We packaged a lightweight 23.7 MB slice in [`datasets/sample_hardware_chunk/`](datasets/sample_hardware_chunk/) with an automated 5-second validator [`datasets/verify_sample_chunk.py`](datasets/verify_sample_chunk.py).
 
-### 9.2 Signal-to-Noise Ratio (SNR) Analysis
+### 9.2 Signal-to-Noise Ratio (SNR) Analysis & Full TVLA
 We implemented memory-mapped zero-copy loaders ([`load_dataset.py`](replication/phase7_real_hardware/load_dataset.py)) to evaluate SNR across both shares of the masked implementation (`mkm4`):
 - **Share 0 (Mask $M$):** Peak $\text{SNR} = \mathbf{0.9035}$ at sample 510.
 - **Share 1 (Masked Key $sk - M$):** Peak $\text{SNR} = \mathbf{0.4332}$ at sample 472.
 The distinct temporal displacement reflects the sequential execution of the two shares in the assembly loop.
+
+| Per-Share SNR across 10,000 Samples (`snr_mkm4_shares.png`) | Full 10,000-Sample Welch's t-test TVLA Curve (`tvla_full_10k.png`) |
+| :---: | :---: |
+| ![Per-Share SNR Analysis](replication/phase7_real_hardware/plots/snr_mkm4_shares.png) | ![Full TVLA Curve](replication/phase7_real_hardware/plots/tvla_full_10k.png) |
 
 ### 9.3 Physical Correlation Power Analysis (CPA) Attacks
 1. **Unmasked `pqm4` Physical Accumulator CPA**:
@@ -732,11 +740,19 @@ The distinct temporal displacement reflects the sequential execution of the two 
 3. **Formal Goodness-of-Fit Negative Controls**:
    - Permuted trace pairing collapses correlation to $|r| < 0.05$ (Rank > 1,500), and quiet off-target baseline sample windows show zero statistical correlation, verifying that recovery is mathematically genuine and free of phantom artifacts.
 
+| Unmasked `pqm4` CPA Convergence (`pqm4_cpa_convergence.png`) | Masked `mkm4` 2nd-Order CPA Convergence (`mkm4_2nd_order_cpa_convergence.png`) |
+| :---: | :---: |
+| ![Unmasked CPA](replication/phase7_real_hardware/plots/pqm4_cpa_convergence.png) | ![Masked CPA](replication/phase7_real_hardware/plots/mkm4_2nd_order_cpa_convergence.png) |
+
 ### 9.4 Novel Machine Learning Combining Function Extension
 Classical second-order CPA relies on a hand-crafted cross-product combining function ($|T(t_1) - T(t_2)|$). We trained a lightweight **Two-Branch Neural Network** (1,285 parameters) under a Pearson correlation objective on variable-key decapsulations to learn the non-linear share combining function directly from raw EM emissions:
 - **8$\times$ Higher Rank-0 Rate**: At $N = 180$ traces under random resampling, the learned combiner achieves a 32.0% Rank-0 rate compared to 4.0% for classical CPA.
 - **Robust Against Physical Drift**: Sustains Sequential Rank 0 throughout $N \in [180, 250]$ where classical CPA slips to Sequential Rank 1 due to physical noise drift.
 - **Superior Convergence**: Drives mean rank down to $0.52 \pm 0.14$ at $N = 500$ (48.0% Rank-0).
+
+| Two-Branch Neural Network Combiner vs. Classical 2nd-Order CPA (`learned_combiner_vs_baseline.png`) |
+| :---: |
+| ![Learned Combiner Comparison](replication/phase7_real_hardware/plots/learned_combiner_vs_baseline.png) |
 
 ---
 

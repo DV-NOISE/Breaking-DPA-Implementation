@@ -49,6 +49,8 @@ Under Gaussian measurement noise, the attacker's Top-1 candidate recovery rate i
 | **0.9** | 0.4003 (40.0%) | **0.0003 (0.03%)** | 0.0300 (3.00%) | **> 1,300x** |
 | **1.0** | 0.2995 (30.0%) | **0.0003 (0.03%)** | 0.0300 (3.00%) | **> 1,000x** |
 
+![Polynomial Blinding Collision Collapse](plots/blinding_comparison.png)
+
 ---
 
 ## 3. Microarchitectural Cost & Instrumented Operation Breakdown

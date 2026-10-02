@@ -50,24 +50,62 @@ All files in the dataset are distributed as chunked NumPy (`.npy`) arrays:
    - Validates trace dimensions (`10000, 10000`), dtypes (`int16`), and metadata ranges against $q = 3329$.
    - Runs against real extracted chunks when present or synthetic mocks during download.
 
-3. **Empirical SNR & TVLA Characterization ([`compute_real_snr.py`](file:///d:/new%20DPA/replication/phase7_real_hardware/compute_real_snr.py))**:
+3. **Empirical SNR & TVLA Characterization ([`compute_real_snr.py`](load_dataset.py))**:
    - Computes Signal-to-Noise Ratio (SNR) on Share 0 ($M$) and Share 1 ($sk - M$).
    - Pointwise fixed-vs-variable Welch's t-test (TVLA) across EM time samples.
-   - Output plots saved to `plots/snr_mkm4_shares.png` and `plots/tvla_real_hardware.png`.
+   - Output plots:
 
-4. **Phase E: Unmasked `pqm4` 1st-Order CPA ([`run_pqm4_cpa.py`](file:///d:/new%20DPA/replication/phase7_real_hardware/run_pqm4_cpa.py))**:
+| Per-Share SNR across 10,000 Samples (`snr_mkm4_shares.png`) | Full 10,000-Sample Welch's t-test TVLA (`tvla_full_10k.png`) |
+| :---: | :---: |
+| ![Per-Share SNR Analysis](plots/snr_mkm4_shares.png) | ![Full TVLA Curve](plots/tvla_full_10k.png) |
+
+4. **Phase E: Unmasked `pqm4` 1st-Order CPA ([`run_pqm4_cpa.py`](run_pqm4_cpa.py))**:
    - Targets Cortex-M4 assembly accumulator intermediate $HW_{32}(a_0 \cdot b_0 + \text{mont\_red}(a_1 \cdot \zeta_0) \cdot b_1)$ at POI sample 1568.
    - Eliminates single-operand ghost peaks and reproduces ~40-trace convergence (Mean rank $2.90 \pm 2.23$ at $N=40$; 70% Rank 0 at $N=60$).
    - Regression test: `test_pqm4_cpa_regression.py` (Step 15 in master suite).
 
-5. **Phase D: Masked `mkm4` 2nd-Order CPA ([`run_mkm4_2nd_order_cpa.py`](file:///d:/new%20DPA/replication/phase7_real_hardware/run_mkm4_2nd_order_cpa.py))**:
+| Unmasked `pqm4` CPA Convergence (`pqm4_cpa_convergence.png`) |
+| :---: |
+| ![Unmasked CPA](plots/pqm4_cpa_convergence.png) |
+
+5. **Phase D: Masked `mkm4` 2nd-Order CPA ([`run_mkm4_2nd_order_cpa.py`](run_mkm4_2nd_order_cpa.py))**:
    - 3-sample smoothed centered cross-product at joint POI sample 299: $P_i = (T_{0, i} - \mu_0) \times (T_{1, i} - \mu_1)$.
    - Mask-averaged circular covariance leakage model computed across all 3,329 candidates in $\mathbb{Z}_q$ via FFT circular convolution.
    - Recovers target key $b[1] = 1422$ at **Rank 0 at $N = 180, 200, 250, 300$ traces** (True Corr = 0.3066 vs Max Wrong = 0.3040 at $N=200$).
    - Regression test: `test_mkm4_cpa_regression.py` (Step 16 in master suite).
 
-6. **Phase F: Learned Combining Function ([`run_learned_combiner.py`](file:///d:/new%20DPA/replication/phase7_real_hardware/run_learned_combiner.py))**:
+| Masked `mkm4` 2nd-Order CPA Convergence (`mkm4_2nd_order_cpa_convergence.png`) |
+| :---: |
+| ![Masked CPA](plots/mkm4_2nd_order_cpa_convergence.png) |
+
+6. **Phase F: Learned Combining Function ([`run_learned_combiner.py`](run_learned_combiner.py))**:
    - Two-Branch Neural Network trained with Adam on Pearson correlation loss using variable-key traces (`100k_capture_all_2`).
    - Evaluated on fixed-key traces without key knowledge: achieves **Rank 0 at $N = 180, 200, 220$**.
-   - Outperforms baseline CPA at $N = 220$ (Learned Rank 0 vs Baseline Rank 1).
-   - Regression test: `test_learned_combiner_regression.py` (Step 17 in master suite).
+   - Outperforms baseline CPA at $N = 220$ (Learned Rank 0 vs Baseline Rank 1) with 8$\times$ higher Rank-0 rate under resampling.
+   - Regression test: `test_learned_combiner_regression.py` (Step 18 in master suite).
+
+| Learned Combining Function Neural Network vs. Baseline (`learned_combiner_vs_baseline.png`) |
+| :---: |
+| ![Learned Combiner](plots/learned_combiner_vs_baseline.png) |
+
+---
+
+## 4. Execution Instructions
+
+```powershell
+# 1. Run zero-copy memory-mapped dataset loader regression
+python replication/phase7_real_hardware/test_real_hardware_regression.py
+
+# 2. Run unmasked pqm4 1st-order CPA (~40 traces)
+python replication/phase7_real_hardware/run_pqm4_cpa.py
+
+# 3. Run masked mkm4 2nd-order CPA (~180 traces)
+python replication/phase7_real_hardware/run_mkm4_2nd_order_cpa.py
+
+# 4. Run formal negative controls (permuted pairing & off-target baseline)
+python replication/phase7_real_hardware/run_negative_controls_full.py
+
+# 5. Run Two-Branch Neural Network learned combiner
+python replication/phase7_real_hardware/run_learned_combiner.py
+```
+

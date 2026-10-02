@@ -31,6 +31,7 @@ In the noiseless regime ($\sigma = 0$), intermediate register states produce dis
 | [`sim_engine.exe`](sim_engine.exe) | Binary | Precompiled 64-bit optimized executable (`g++ -O3`). |
 | [`run_figure5.py`](run_figure5.py) | Python | Evaluates collision multiplicity frequencies across all 128 NTT roots for $q$ and $q^2$ templates. |
 | [`verify_checkpoints.py`](verify_checkpoints.py) | Python | Validates generated checkpoint distributions against author reference CSVs. |
+| [`verify_author_zetas.py`](verify_author_zetas.py) | Python | Parses all 128 NTT roots from Dr. Kirthi (`author_files/raw_zetas_128/`), validating 99.69% Figure 5 match. |
 | [`test_sim_regression.py`](test_sim_regression.py) | Python | Regression test asserting numerical ground truths and static source code packing consistency. |
 | [`compute_expectation.py`](compute_expectation.py) | Python | Statistical expectation calculation tool for unique states across roots. |
 | [`zetas/`](zetas/) | Directory | Precomputed simulation collision dumps for all 128 individual NTT roots. |
@@ -92,7 +93,20 @@ OVERALL EXPECTED MEANS ACROSS ALL 128 ZETAS (q^2-templates):
   3-way collision:  1.61e-05  (Paper Figure 5: 1.01e-05)
 ```
 
+### Step 4: Verify Author 128 NTT Roots Dataset (`raw_zetas_128/`)
+```powershell
+python replication/phase1_noiseless/verify_author_zetas.py
+```
+*Expected Output:*
+```
+[+] Successfully parsed all 128 NTT root files!
+[+] Over 1.5 million candidate pairs evaluated across 128 roots.
+[+] Overall Empiric 1-way unique match: 99.6881% (Matches Figure 5 Lower Curve ~99.74%)
+[+] Overall Empiric 2-way collision:    0.2729%
+```
+
 ### (Optional) Recompile Simulation Engine
 ```powershell
 g++ -O3 replication/phase1_noiseless/sim_engine.cpp -o replication/phase1_noiseless/sim_engine.exe
 ```
+

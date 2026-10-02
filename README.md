@@ -10,15 +10,15 @@
 
 ## 📑 Table of Contents
 1. [Project Overview & Attack Principle](#1-project-overview--attack-principle)
-2. [Quick Start: 1-Command Automated Master Verification](#-quick-start-1-command-automated-master-verification)
-3. [Core Audit Findings, Bug Fixes & Discrepancy Resolutions](#-core-audit-findings-bug-fixes--discrepancy-resolutions)
-4. [Complete File & Directory Map](#2-complete-file--directory-map)
+2. [Quick Start: 1-Command Automated Master Verification](#2-quick-start-1-command-automated-master-verification)
+3. [Core Audit Findings, Bug Fixes & Discrepancy Resolutions](#3-core-audit-findings-bug-fixes--discrepancy-resolutions)
+4. [Complete File & Directory Map](#4-complete-file--directory-map)
    - [Root Workspace Files](#root-workspace-files)
    - [Physical Hardware Datasets (`datasets/`)](#physical-hardware-datasets-datasets)
    - [Original Author Repository (`Attack_Kyber_ACNS2024/`)](#original-author-repository-attack_kyber_acns2024)
    - [Author Reference Data (`author_files/`)](#author-reference-data-author_files)
    - [Replication & Extension Framework (`replication/`)](#replication--extension-framework-replication)
-5. [Detailed Meaning, Research Purpose & Replication of Each Figure](#3-detailed-meaning-research-purpose--replication-of-each-figure)
+5. [Detailed Meaning, Research Purpose & Replication of Each Figure](#5-detailed-meaning-research-purpose--replication-of-each-figure)
    - [Visualization & Re-creation Disclaimer](#-visualization--re-creation-disclaimer)
    - [Figure 1: Oscilloscope EM Trace Characterization](#figure-1-oscilloscope-em-trace-characterization)
    - [Figure 2: Pipeline Register Inertia & Accumulator Residue](#figure-2-pipeline-register-inertia--accumulator-residue)
@@ -29,14 +29,14 @@
    - [Table 1: Closed-Form Key Recovery Probability Matrix](#table-1-closed-form-key-recovery-probability-matrix-pl--5)
    - [Table 2: Comparative Literature Matrix](#table-2-comparative-literature-matrix)
    - [Exploratory ML Profiler vs. Pearson Baseline](#exploratory-ml-profiler-vs-pearson-baseline)
-6. [How the Cycle-Accurate Hardware Simulation Was Built (Phase 3)](#4-how-the-cycle-accurate-hardware-simulation-was-built-phase-3)
-   - [Waveform Visualizations: Synthetic Emulator vs Physical Capture](#5-waveform-visualizations-synthetic-emulator-vs-physical-capture)
-7. [Full End-to-End Key Recovery Attack Results (Phase 4)](#5-full-end-to-end-key-recovery-attack-results-phase-4)
-8. [Novel Research Contribution: Machine Learning Profiler (Phase 5)](#6-novel-research-contribution-machine-learning-profiler-phase-5)
-9. [Novel Countermeasure Evaluation: Polynomial Blinding & ISO/IEC 17825 TVLA (Phase 6)](#7-novel-countermeasure-evaluation-polynomial-blinding--tvla-phase-6)
-10. [Physical Silicon EM Validation & Learned Combining Function (Phase 7)](#8-physical-silicon-em-validation--learned-combining-function-phase-7)
-11. [Testing & Execution Procedures (Step-by-Step & Automated)](#9-testing--execution-procedures-step-by-step--automated)
-12. [Authors & Citation](#-authors--citation)
+6. [How the Cycle-Accurate Hardware Simulation Was Built (Phase 3)](#6-how-the-cycle-accurate-hardware-simulation-was-built-phase-3)
+   - [Waveform Visualizations: Synthetic Emulator vs Physical Capture](#waveform-visualizations-synthetic-emulator-vs-physical-capture)
+7. [Full End-to-End Key Recovery Attack Results (Phase 4)](#7-full-end-to-end-key-recovery-attack-results-phase-4)
+8. [Novel Research Contribution: Machine Learning Profiler (Phase 5)](#8-novel-research-contribution-machine-learning-profiler-phase-5)
+9. [Novel Countermeasure Evaluation: Polynomial Blinding & ISO/IEC 17825 TVLA (Phase 6)](#9-novel-countermeasure-evaluation-polynomial-blinding--isoiec-17825-tvla-phase-6)
+10. [Physical Silicon EM Validation & Learned Combining Function (Phase 7)](#10-physical-silicon-em-validation--learned-combining-function-phase-7)
+11. [Testing & Execution Procedures (Step-by-Step & Automated)](#11-testing--execution-procedures-step-by-step--automated)
+12. [Authors & Citation](#12-authors--citation)
 
 ---
 
@@ -61,7 +61,7 @@ Because both shares or consecutive products transition through the same physical
 
 ---
 
-## ⚡ Quick Start: 1-Command Automated Master Verification
+## 2. Quick Start: 1-Command Automated Master Verification
 
 Execute the complete 18-step automated test suite spanning algorithmic simulation, author multi-zeta validation, polynomial blinding countermeasure, TVLA evaluations, real-hardware ARM Cortex-M4 EM characterization, CPA attacks on `pqm4` and masked `mkm4`, formal negative controls, and the Two-Branch Neural Network learned combiner:
 
@@ -72,7 +72,7 @@ python replication/run_all_tests.py
 
 ---
 
-## 🔬 Core Audit Findings, Bug Fixes & Discrepancy Resolutions
+## 3. Core Audit Findings, Bug Fixes & Discrepancy Resolutions
 
 During pre-release code audits, author correspondence, and real-hardware investigations, several critical discrepancies, literature errata, and empirical discoveries were identified and resolved:
 
@@ -107,10 +107,9 @@ Using the open EM side-channel dataset by Magazin & Abdellatif (ePrint 2026/1851
 
 ---
 
-## 2. Complete File & Directory Map
+## 4. Complete File & Directory Map
 
 ### Root Workspace Files
-| File / Directory | Description & Function |
 | File / Directory | Description & Function |
 | :--- | :--- |
 | [`Breaking DPA-protected Kyber via the pair-pointwise multiplication.pdf`](Breaking%20DPA-protected%20Kyber%20via%20the%20pair-pointwise%20multiplication.pdf) | Original published ACNS 2024 paper providing theoretical foundations, equations, and experimental figures. |
@@ -233,7 +232,7 @@ replication/
 
 ---
 
-## 3. Detailed Meaning, Research Purpose & Replication of Each Figure
+## 5. Detailed Meaning, Research Purpose & Replication of Each Figure
 
 > [!IMPORTANT]
 > **Visualization & Re-creation Disclaimer**: The visual comparisons presented below pair the original figures published in the ACNS 2024 paper against our visual replication plots. **These are stylized recreations, not independent physical measurements or direct outputs from this repository's software emulator.** They are reproduced to mirror the paper's published shapes, axes, signal dynamics, and empirical parameters for pedagogical analysis, side-by-side visual fidelity, and documentation integrity.
@@ -424,12 +423,13 @@ $$P_{\text{recovery}}(l \le 5) = p_{100}^{128} \times \sum_{l=0}^{5} \binom{128}
 - **How It Was Replicated (`phase5_improvements/ml_attack_model.py`)**:
   - Evaluated on a 50-trace synthetic dataset ($N=10$ per class) under simulated Gaussian noise ($\sigma = 0.35$).
 
+| Multi-Layer Perceptron Profiler vs. Linear Pearson Baseline |
+| :---: |
+| ![ML vs Pearson Benchmark](replication/phase5_improvements/ml_vs_pearson_improvement.png) |
+
 ---
 
-
----
-
-## 4. How the Cycle-Accurate Hardware Simulation Was Built
+## 6. How the Cycle-Accurate Hardware Simulation Was Built (Phase 3)
 
 To develop and test the attack without requiring physical lab access, we built a cycle-accurate hardware emulator in `replication/phase3_hw_emulator/generate_synthetic_trs.py`.
 
@@ -479,7 +479,7 @@ $$L(t) = \alpha \cdot \text{HW}(V_{\text{current}}) + \beta \cdot \text{HW}(V_{\
 
 ---
 
-## 5. Full End-to-End Key Recovery Attack Results (Phase 4)
+## 7. Full End-to-End Key Recovery Attack Results (Phase 4)
 
 With the cycle-accurate synthetic `.TRS` trace generated, Phase 4 executes the Pearson correlation template attack ([`replication/phase4_attack/run_attack.py`](replication/phase4_attack/run_attack.py)):
 
@@ -499,7 +499,7 @@ Use [`replication/phase4_attack/view_key.py`](replication/phase4_attack/view_key
 
 ---
 
-## 6. Novel Research Contribution: Machine Learning Profiler (Phase 5)
+## 8. Novel Research Contribution: Machine Learning Profiler (Phase 5)
 
 ### Motivation: Limitations of the Authors' Pearson Baseline
 The original attack in ACNS 2024 relies strictly on univariate, linear Pearson correlation:
@@ -679,16 +679,16 @@ Run the existing attack scripts (`run_attack.py` or `ml_attack_model.py`) direct
 
 ---
 
-## 8. Novel Countermeasure Evaluation: Polynomial Blinding & ISO/IEC 17825 TVLA (Phase 6)
+## 9. Novel Countermeasure Evaluation: Polynomial Blinding & ISO/IEC 17825 TVLA (Phase 6)
 
 To protect the pair-pointwise multiplication without the prohibitive execution overhead of higher-order masking, we implemented and rigorously evaluated the **polynomial blinding** countermeasure ($A \cdot t \cdot t^{-1}$) proposed in Section 6 of the ACNS 2024 paper.
 
-### 8.1 Countermeasure Mechanism
+### 9.1 Countermeasure Mechanism
 Before each polynomial multiplication, the public matrix element $A$ is multiplied by an ephemeral random invertible polynomial $t \in R_q^\times$, and the resulting product is multiplied by $t^{-1}$ after accumulation:
 $$C = \text{InvNTT}((A \cdot t) \circ s) \cdot t^{-1}$$
 Because $t$ changes freshly for every decapsulation, intermediate register transitions become non-deterministic functions of secret key coefficients.
 
-### 8.2 Empirical Collision & TVLA Verification
+### 9.2 Empirical Collision & TVLA Verification
 We evaluated blinding across three rigorous dimensions:
 1. **Collision Suppression**: In noiseless C++ simulation across all 128 NTT roots, unique collision rates drop from **99.75% to 0.00%** (>3,300$\times$ suppression).
 2. **Fixed-vs-Random TVLA (ISO/IEC 17825)**: Evaluated across $N = 10,000$ traces per group ($20,000$ traces total) over 33 Points of Interest spanning all 13 intermediate execution states:
@@ -709,18 +709,18 @@ We evaluated blinding across three rigorous dimensions:
 
 ---
 
-## 9. Physical Silicon EM Validation & Learned Combining Function (Phase 7)
+## 10. Physical Silicon EM Validation & Learned Combining Function (Phase 7)
 
 To bridge the gap between idealized simulation and physical hardware, we evaluated the open electromagnetic dataset published by Magazin & Abdellatif (ePrint 2026/1851).
 
-### 9.1 Hardware Setup & Dataset Architecture
+### 10.1 Hardware Setup & Dataset Architecture
 - **Target Microcontroller**: STM32F407VG featuring an ARM Cortex-M4 core clocked at 84 MHz.
 - **Acquisition Modality**: Langer near-field EM probe placed over microcontroller decoupling capacitors, sampled at **6.25 GS/s** (74 samples per clock cycle).
 - **Scope of Data**: 10,000 time samples per trace ($\sim$1.6 $\mu$s / $\sim$134 clock cycles) centered on the pair-pointwise polynomial multiplication.
 - **Dataset Scale**: 12.57 GB total archive comprising unmasked (`pqm4`), masked (`mkm4`), fixed-key, and variable-key captures. Verified against SHA-256 hash `4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143`.
 - **Zero-Setup Verification Slice**: We packaged a lightweight 23.7 MB slice in [`datasets/sample_hardware_chunk/`](datasets/sample_hardware_chunk/) with an automated 5-second validator [`datasets/verify_sample_chunk.py`](datasets/verify_sample_chunk.py).
 
-### 9.2 Signal-to-Noise Ratio (SNR) Analysis & Full TVLA
+### 10.2 Signal-to-Noise Ratio (SNR) Analysis & Full TVLA
 We implemented memory-mapped zero-copy loaders ([`load_dataset.py`](replication/phase7_real_hardware/load_dataset.py)) to evaluate SNR across both shares of the masked implementation (`mkm4`):
 - **Share 0 (Mask $M$):** Peak $\text{SNR} = \mathbf{0.9035}$ at sample 510.
 - **Share 1 (Masked Key $sk - M$):** Peak $\text{SNR} = \mathbf{0.4332}$ at sample 472.
@@ -730,7 +730,7 @@ The distinct temporal displacement reflects the sequential execution of the two 
 | :---: | :---: |
 | ![Per-Share SNR Analysis](replication/phase7_real_hardware/plots/snr_mkm4_shares.png) | ![Full TVLA Curve](replication/phase7_real_hardware/plots/tvla_full_10k.png) |
 
-### 9.3 Physical Correlation Power Analysis (CPA) Attacks
+### 10.3 Physical Correlation Power Analysis (CPA) Attacks
 1. **Unmasked `pqm4` Physical Accumulator CPA**:
    - Targets the 32-bit accumulator switching intermediate ($HW_{32}(a_0 b_0 + \text{mont\_red}(a_1 \zeta_0) b_1)$) at sample 1568 (peak $|r| = 0.5638$).
    - Converges to key recovery in $\approx 40$ traces: mean rank $5.92 \pm 1.61$ and 37.5% Rank-0 at $N=40$, reaching 68.0% Rank-0 with mean rank $0.94 \pm 0.27$ at $N=100$.
@@ -744,7 +744,7 @@ The distinct temporal displacement reflects the sequential execution of the two 
 | :---: | :---: |
 | ![Unmasked CPA](replication/phase7_real_hardware/plots/pqm4_cpa_convergence.png) | ![Masked CPA](replication/phase7_real_hardware/plots/mkm4_2nd_order_cpa_convergence.png) |
 
-### 9.4 Novel Machine Learning Combining Function Extension
+### 10.4 Novel Machine Learning Combining Function Extension
 Classical second-order CPA relies on a hand-crafted cross-product combining function ($|T(t_1) - T(t_2)|$). We trained a lightweight **Two-Branch Neural Network** (1,285 parameters) under a Pearson correlation objective on variable-key decapsulations to learn the non-linear share combining function directly from raw EM emissions:
 - **8$\times$ Higher Rank-0 Rate**: At $N = 180$ traces under random resampling, the learned combiner achieves a 32.0% Rank-0 rate compared to 4.0% for classical CPA.
 - **Robust Against Physical Drift**: Sustains Sequential Rank 0 throughout $N \in [180, 250]$ where classical CPA slips to Sequential Rank 1 due to physical noise drift.
@@ -756,13 +756,13 @@ Classical second-order CPA relies on a hand-crafted cross-product combining func
 
 ---
 
-## 10. Testing & Execution Procedures (Step-by-Step & Automated)
+## 11. Testing & Execution Procedures (Step-by-Step & Automated)
 
 This section outlines the complete, rigorous procedure to verify, test, and run every phase of the project from scratch.
 
 ---
 
-### 10.1 Environment Setup & Prerequisites
+### 11.1 Environment Setup & Prerequisites
 
 Ensure Python 3.10+ (tested on Python 3.13) is installed and available in your system path.
 
@@ -782,7 +782,7 @@ pip install numpy matplotlib scipy scikit-learn pymupdf
 
 ---
 
-### 10.2 Method 1: One-Click Automated Master Test Suite
+### 11.2 Method 1: One-Click Automated Master Test Suite
 
 For an immediate, end-to-end diagnostic of the entire replication and research extension, execute the master automated test runner:
 
@@ -871,7 +871,7 @@ Total Execution Time: ~52.2s
 
 ---
 
-### 10.3 Method 2: Step-by-Step Manual Execution Walkthrough
+### 11.3 Method 2: Step-by-Step Manual Execution Walkthrough
 
 Follow these steps to run and inspect individual phases:
 
@@ -1070,7 +1070,7 @@ python replication/phase7_real_hardware/test_learned_combiner_regression.py
 
 ---
 
-### 8.4 Standalone Data & Verification Scripts
+### 11.4 Standalone Data & Verification Scripts
 
 In addition to the 18-step master test suite, the repository includes two standalone high-speed validators:
 
@@ -1092,6 +1092,7 @@ python datasets/verify_sample_chunk.py
 
 ---
 
-## 📜 Authors & Citation
+## 12. Authors & Citation
 - **Replication & ML Extension**: Post-Quantum Cryptography Research Group
 - **Reference Paper**: *Breaking DPA-protected Kyber via the pair-pointwise multiplication*, Applied Cryptography and Network Security (ACNS), 2024.
+

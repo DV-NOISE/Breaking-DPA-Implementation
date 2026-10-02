@@ -29,6 +29,10 @@ Classical template attacks and Pearson correlation assume linear relationships b
 - **Comparison Visualization**:
   - Saved to [`ml_vs_pearson_improvement.png`](ml_vs_pearson_improvement.png).
 
+| Multi-Layer Perceptron Profiler vs. Linear Pearson Baseline |
+| :---: |
+| ![ML vs Pearson Benchmark](ml_vs_pearson_improvement.png) |
+
 ---
 
 ## 3. Scope & Limitations

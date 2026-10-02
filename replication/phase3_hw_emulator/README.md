@@ -30,6 +30,10 @@ The output is formatted as a standard **Riscure Inspector `.TRS` trace file**, m
 | [`traces/`](traces/) | Directory | Storage directory for generated `.TRS` binary trace files. |
 | [`trace_visualization.png`](trace_visualization.png) | Image | Multi-sample oscilloscope waveform visualization. |
 
+| Synthetic Emulated Power Trace (`trace_preview.png`) | Physical Silicon Oscilloscope Acquisition (`trace_visualization.png`) |
+| :---: | :---: |
+| ![Synthetic Trace Preview](trace_preview.png) | ![Physical Reference Trace](trace_visualization.png) |
+
 ---
 
 ## 3. Scope & Scientific Context

@@ -1,0 +1,81 @@
+================================================================================
+EXECUTION LOG: run_mkm4_2nd_order_cpa.py
+Timestamp:      2026-09-14 04:04:39 UTC
+Platform:       Windows-11-10.0.26200-SP0 (AMD64)
+Python Version: 3.13.2 (C:\Users\dev26\AppData\Local\Programs\Python\Python313\python.exe)
+Working Dir:    d:\new DPA
+Script Path:    d:\new DPA\replication\phase7_real_hardware\run_mkm4_2nd_order_cpa.py
+Dataset Checksum:
+# Magazin & Abdellatif (ePrint 2026/1851) Dataset Archive
+# Source: https://pub-3483b4c265914de3a2a27c0a3b2076ee.r2.dev/d0nj0n_mlkem_dataset.zip
+# Size: 13494522554 bytes
+SHA256 (d0nj0n_mlkem_dataset.zip) = 4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143
+================================================================================
+
+================================================================================
+  PHASE D: REPRODUCING SECOND-ORDER CPA ATTACK ON MASKED MKM4
+================================================================================
+[*] Target Operation: Masked basemul_asm on STM32F407 Cortex-M4
+[*] Target Secret Key Coefficient: b[1] = 1422 (Ground Truth in fixed_unmasked_key.npy)
+[*] Joint Point of Interest (POI) Window: Samples 292-304 (smoothed centered cross-product)
+[*] Candidate Space: ALL 3329 candidate hypotheses in Z_q
+[*] Loading pool of N=2000 traces...
+[*] Precomputing mask-averaged circular covariance model for N=2000 traces...
+[+] Covariance model matrix computed: (3329, 2000) elements.
+
+================================================================================
+  NEGATIVE CONTROL / NULL HYPOTHESIS TEST: WINDOWED SCORER VALIDATION
+================================================================================
+[*] Breaking trace-to-model pairing across 50 independent trials at N=500...
+[+] Null Hypothesis Mean Rank: 1550.62 (Expected Uniform: 1664.50)
+[+] Null Hypothesis Median Rank: 1570.50
+[+] Null Hypothesis Rank 0 Recoveries: 0 / 50 (0.0%)
+[+] Null Hypothesis Rank < 100 Count: 2 / 50 (4.0%)
+[+] Two-Sided Kolmogorov-Smirnov Goodness-of-Fit: D = 0.1151, p = 0.4864
+[+] Exact Binomial Test (Rank < 100): p = 0.6630
+[+] Null Hypothesis Mean r_true: 0.0846 vs Mean max r_wrong: 0.1865
+================================================================================
+
+--------------------------------------------------------------------------------
+  EVALUATION 1: SEQUENTIAL TRACE PROGRESSION (Reference Acquisition Mode)
+--------------------------------------------------------------------------------
+N Traces     Rank       Corr True      Max Wrong      Margin    
+--------------------------------------------------------------------------------
+N = 50       299        0.3565         0.5511         -0.1946   
+N = 100      125        0.2842         0.3986         -0.1144   
+N = 150      7          0.2861         0.3198         -0.0337   
+N = 180      0          0.3374         0.3349         +0.0026    [RANK 0 RECOVERY!]
+N = 200      1          0.3362         0.3382         -0.0021   
+N = 220      1          0.3041         0.3121         -0.0079   
+N = 250      1          0.3080         0.3179         -0.0099   
+N = 300      1          0.2767         0.2771         -0.0004   
+N = 400      1          0.2907         0.2966         -0.0059   
+N = 500      1          0.2689         0.2732         -0.0043   
+
+--------------------------------------------------------------------------------
+  EVALUATION 2: STATISTICAL MULTI-SUBSET ANALYSIS (50 Independent Monte Carlo Subsets)
+--------------------------------------------------------------------------------
+N Traces     Rank 0 (%)     Mean Rank      95% CI         Mean rTrue   Mean rWrong  Margin    
+--------------------------------------------------------------------------------
+N = 50       0.0            1013.34        232.47         0.3101       0.5457       -0.2356   
+N = 100      0.0            365.72         145.17         0.2731       0.3987       -0.1256   
+N = 150      4.0            329.88         150.96         0.2433       0.3350       -0.0917   
+N = 180      12.0           99.40          61.47          0.2498       0.3034       -0.0536   
+N = 200      6.0            80.40          39.33          0.2402       0.2907       -0.0505   
+N = 220      16.0           77.12          66.13          0.2421       0.2766       -0.0345   
+N = 250      16.0           54.64          57.07          0.2345       0.2678       -0.0333   
+N = 300      32.0           15.70          11.61          0.2275       0.2455       -0.0180   
+N = 400      36.0           7.56           6.78           0.2239       0.2330       -0.0091   
+N = 500      52.0           1.24           1.14           0.2243       0.2248       -0.0005   
+
+[+] Saved Phase D empirical results to: replication/phase7_real_hardware\mkm4_2nd_order_cpa_results.txt
+[+] Saved publication figure: replication/phase7_real_hardware\plots\mkm4_2nd_order_cpa_convergence.png
+================================================================================
+  [+] PHASE D SECOND-ORDER CPA ATTACK REPRODUCTION COMPLETE
+================================================================================
+
+
+================================================================================
+Process exited with code: 0
+Elapsed time: 26.66 seconds
+================================================================================

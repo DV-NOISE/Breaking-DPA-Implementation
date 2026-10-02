@@ -1,0 +1,83 @@
+================================================================================
+EXECUTION LOG: run_learned_combiner.py
+Timestamp:      2026-09-14 11:43:19 UTC
+Platform:       Windows-11-10.0.26200-SP0 (AMD64)
+Python Version: 3.13.2 (C:\Users\dev26\AppData\Local\Programs\Python\Python313\python.exe)
+Working Dir:    d:\new DPA
+Script Path:    d:\new DPA\replication\phase7_real_hardware\run_learned_combiner.py
+Dataset Checksum:
+# Magazin & Abdellatif (ePrint 2026/1851) Dataset Archive
+# Source: https://pub-3483b4c265914de3a2a27c0a3b2076ee.r2.dev/d0nj0n_mlkem_dataset.zip
+# Size: 13494522554 bytes
+SHA256 (d0nj0n_mlkem_dataset.zip) = 4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143
+================================================================================
+
+================================================================================
+  PHASE F: NOVEL LEARNED COMBINING FUNCTION FOR MASKED KYBER (MKM4)
+================================================================================
+[*] Loading Profiling Data (Variable Scenario) for training...
+[*] Training pool: N=3000 traces from variable key capture.
+[*] Precomputing target training labels (true key mask-averaged covariance)...
+[+] Training labels generated. Standardizing targets...
+[*] Training Two-Branch Neural Network Combiner (30 epochs)...
+    Epoch 10/30 | Training Pearson Correlation: 0.2304
+    Epoch 20/30 | Training Pearson Correlation: 0.2814
+    Epoch 30/30 | Training Pearson Correlation: 0.3176
+[+] Learned combiner training complete.
+
+[*] Loading Attack Data (Fixed Scenario) for evaluation...
+[*] Target Secret: b[1] = 1422
+[*] Generating learned combined leakages via TwoBranchCombiner...
+[*] Precomputing candidate models across all 3329 hypotheses for N=1000 traces...
+
+================================================================================
+  DIRECT SIGNAL-TO-HYPOTHESIS CORRELATION EVALUATION (N = 1000 Fixed Traces)
+================================================================================
+  * Baseline Centered Cross-Product Corr with True Model : 0.0407
+  * Learned Two-Branch Combiner Corr with True Model      : 0.2463
+  * Direct Signal Amplification Gain                      : +505.4%
+================================================================================
+
+================================================================================
+  EVALUATION 1: SEQUENTIAL TRACE PROGRESSION (Reference Acquisition Mode)
+================================================================================
+N Traces   Baseline Rank (Phase D)    Learned Combiner Rank (Phase F)  Outcome
+--------------------------------------------------------------------------------
+N = 50     66                         144                              BASELINE BETTER
+N = 100    31                         44                               BASELINE BETTER
+N = 150    2                          10                               BASELINE BETTER
+N = 180    0                          0                                BOTH RANK 0!
+N = 200    1                          0                                ML RANK 0 WIN!
+N = 220    1                          0                                ML RANK 0 WIN!
+N = 250    1                          0                                ML RANK 0 WIN!
+N = 300    1                          1                                MATCH
+N = 400    1                          1                                MATCH
+N = 500    1                          1                                MATCH
+
+================================================================================
+  EVALUATION 2: 50 INDEPENDENT MONTE CARLO RANDOM SUBSETS PER N
+================================================================================
+N Traces   Base Rank0 (%)   Base Mean Rank     ML Rank0 (%)     ML Mean Rank       Advantage
+--------------------------------------------------------------------------------
+N = 50     0.0              1036.66 +/- 229.55   0.0              392.60 +/- 136.23   ML LOWER RANK
+N = 100    0.0              572.98 +/- 199.09   10.0             178.52 +/- 127.88   ML LOWER RANK
+N = 150    2.0              730.42 +/- 254.74   12.0              54.32 +/- 45.52    ML LOWER RANK
+N = 180    4.0              871.92 +/- 295.06   32.0              12.54 +/- 7.81     ML LOWER RANK
+N = 200    0.0              869.14 +/- 312.56   20.0              15.20 +/- 13.24    ML LOWER RANK
+N = 220    2.0              820.82 +/- 304.98   24.0               8.32 +/- 5.38     ML LOWER RANK
+N = 250    2.0              681.78 +/- 289.76   28.0               7.72 +/- 5.51     ML LOWER RANK
+N = 300    2.0              689.26 +/- 315.64   48.0               2.30 +/- 1.29     ML LOWER RANK
+N = 400    8.0              1044.64 +/- 355.11   58.0               0.46 +/- 0.17     ML LOWER RANK
+N = 500    16.0             681.82 +/- 272.48   48.0               0.52 +/- 0.14     ML LOWER RANK
+
+[+] Saved Phase F comparison table: replication/phase7_real_hardware\learned_combiner_results.txt
+[+] Saved publication comparison plot: replication/phase7_real_hardware\plots\learned_combiner_vs_baseline.png
+================================================================================
+  [+] PHASE F LEARNED COMBINER EVALUATION COMPLETE
+================================================================================
+
+
+================================================================================
+Process exited with code: 0
+Elapsed time: 13.82 seconds
+================================================================================

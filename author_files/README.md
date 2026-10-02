@@ -8,8 +8,17 @@ To ensure long-term maintainability and clear provenance, the materials are orga
 author_files/
 ├── figure5_results/              # Expectation scripts & precomputed Figure 5 collision results
 ├── original_simulators/          # Initial C/C++ attack simulation source code
-└── checkpoints_and_datasets/     # Master reference datasets, CSV checkpoints & Table 1 data
+├── checkpoints_and_datasets/     # Master reference datasets, CSV checkpoints & Table 1 data
+└── raw_zetas_128/                # Raw multi-zeta Monte Carlo simulation dumps (received from Dr. Kirthi Puniamurthy)
 ```
+
+---
+
+## 4. `raw_zetas_128/`
+Contains the raw, comprehensive Monte Carlo collision datasets across all 128 NTT roots ($\pm \zeta$), received directly from Dr. Kirthivaasan Puniamurthy via correspondence on September 19, 2026 (`zetas.zip`):
+- **128 Root Simulation Files (`zeta-0-2226.dat` to `zeta-63--1628.dat`):** Contain raw per-pair collision distributions across thousands of candidate pairs for each root, yielding an overall 1-way unique match probability of **99.6881%** (matching the published Figure 5 lower curve ~99.74%).
+- **10 Detailed Candidate Log Files (`zeta105.dat`, `zeta2226.dat`, etc.):** Explicit $(b_0, b_1)$ candidate pair logs confirming that the authors sampled between 9,146 and 12,149 candidate pairs per root.
+- **Verification:** Validated by `replication/phase1_noiseless/verify_author_zetas.py` and `compute_expectation.py`.
 
 ---
 

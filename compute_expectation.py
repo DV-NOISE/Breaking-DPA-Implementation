@@ -10,8 +10,9 @@ zetas = [
 
 # Robust path resolution
 POSSIBLE_DIRS = [
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "author_files/raw_zetas_128"),
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "replication/phase1_noiseless/zetas"),
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "zetas"),
+    "author_files/raw_zetas_128",
     "replication/phase1_noiseless/zetas",
     "zetas"
 ]

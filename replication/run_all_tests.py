@@ -69,6 +69,54 @@ TEST_STEPS = [
         "name": "Extract PDF Graphics & Plot Fig 2, 4",
         "script": "replication/extract_paper_figures.py",
         "description": "Extracts vector PDF figures and plots pipeline inertia and OTA distributions"
+    },
+    {
+        "phase": "Phase 2",
+        "name": "Independent q2 Sweep & P(l<=5)",
+        "script": "replication/phase2_noisy/run_q2_table1_independent.py",
+        "description": "Evaluates independent 11M-candidate Monte Carlo sweep, P(l<=5), and Figure 7 plot"
+    },
+    {
+        "phase": "Phase 6",
+        "name": "Polynomial Blinding Countermeasure",
+        "script": "replication/phase6_countermeasures/run_countermeasure_eval.py",
+        "description": "Measures collision collapse (>3000x), noisy degradation, and operation overhead"
+    },
+    {
+        "phase": "Phase 6",
+        "name": "Fixed-vs-Random TVLA Evaluation",
+        "script": "replication/phase6_countermeasures/run_tvla_evaluation.py",
+        "description": "Computes Welch's t-test showing baseline leaks (|t|>4.5) and blinding passes (|t|<=4.5)"
+    },
+    {
+        "phase": "Phase C",
+        "name": "Real-Hardware Dataset Loader & Layout",
+        "script": "replication/phase7_real_hardware/test_real_hardware_regression.py",
+        "description": "Validates 10k x 10k int16 trace arrays, 256-coeff metadata, and row-by-row alignment"
+    },
+    {
+        "phase": "Phase E",
+        "name": "pqm4 Unmasked CPA Attack (~40 traces)",
+        "script": "replication/phase7_real_hardware/test_pqm4_cpa_regression.py",
+        "description": "Validates correlation power analysis convergence on unmasked ARM Cortex-M4 EM traces"
+    },
+    {
+        "phase": "Phase D",
+        "name": "mkm4 Masked 2nd-Order CPA (~200 traces)",
+        "script": "replication/phase7_real_hardware/test_mkm4_cpa_regression.py",
+        "description": "Validates second-order covariance CPA convergence on masked ARM Cortex-M4 EM traces"
+    },
+    {
+        "phase": "Phase D",
+        "name": "Masked CPA Formal Negative Controls",
+        "script": "replication/phase7_real_hardware/test_negative_controls_regression.py",
+        "description": "Validates formal goodness-of-fit stats for permuted pairing and validated quiet off-target window"
+    },
+    {
+        "phase": "Phase F",
+        "name": "Learned Combining Function (Novel ML Extension)",
+        "script": "replication/phase7_real_hardware/test_learned_combiner_regression.py",
+        "description": "Validates Two-Branch Neural Network learned combiner convergence vs Phase D baseline"
     }
 ]
 

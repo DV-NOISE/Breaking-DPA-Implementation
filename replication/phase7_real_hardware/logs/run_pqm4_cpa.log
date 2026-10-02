@@ -1,0 +1,46 @@
+================================================================================
+EXECUTION LOG: run_pqm4_cpa.py
+Timestamp:      2026-09-14 04:04:38 UTC
+Platform:       Windows-11-10.0.26200-SP0 (AMD64)
+Python Version: 3.13.2 (C:\Users\dev26\AppData\Local\Programs\Python\Python313\python.exe)
+Working Dir:    d:\new DPA
+Script Path:    d:\new DPA\replication\phase7_real_hardware\run_pqm4_cpa.py
+Dataset Checksum:
+# Magazin & Abdellatif (ePrint 2026/1851) Dataset Archive
+# Source: https://pub-3483b4c265914de3a2a27c0a3b2076ee.r2.dev/d0nj0n_mlkem_dataset.zip
+# Size: 13494522554 bytes
+SHA256 (d0nj0n_mlkem_dataset.zip) = 4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143
+================================================================================
+
+================================================================================
+  PHASE E: TEXTBOOK CPA ATTACK REPRODUCTION ON UNMASKED PQM4
+================================================================================
+[*] Target Secret Coefficients (Ground Truth): a0 = 679, a1 = 1286
+[*] Operation: accum = 679*b0 + mont_red(1286*2226)*b1
+[*] Physical POI: Sample 1568 (Peak EM accumulator switching)
+[*] Testing candidate space: 100 candidate pairs across 11 trace counts.
+[*] Performing 100 independent Monte Carlo repetitions per trace count for confidence intervals...
+
+  N = 10 traces | Rank 0 Success:  11.0% | Mean Rank: 20.18 +/- 4.79 | True Corr: 0.5871 vs Max Wrong: 0.7964
+  N = 15 traces | Rank 0 Success:  11.0% | Mean Rank: 13.37 +/- 3.66 | True Corr: 0.5458 vs Max Wrong: 0.6922
+  N = 20 traces | Rank 0 Success:  26.0% | Mean Rank: 8.62 +/- 2.99 | True Corr: 0.5789 vs Max Wrong: 0.6666
+  N = 25 traces | Rank 0 Success:  22.0% | Mean Rank: 9.32 +/- 3.38 | True Corr: 0.5237 vs Max Wrong: 0.6097
+  N = 30 traces | Rank 0 Success:  36.0% | Mean Rank: 9.83 +/- 3.46 | True Corr: 0.5220 vs Max Wrong: 0.6052
+  N = 35 traces | Rank 0 Success:  37.0% | Mean Rank: 9.99 +/- 3.57 | True Corr: 0.4976 vs Max Wrong: 0.5546
+  N = 40 traces | Rank 0 Success:  37.0% | Mean Rank: 6.61 +/- 2.60 | True Corr: 0.5208 vs Max Wrong: 0.5657
+  N = 50 traces | Rank 0 Success:  42.0% | Mean Rank: 5.64 +/- 2.31 | True Corr: 0.4948 vs Max Wrong: 0.5195
+  N = 60 traces | Rank 0 Success:  42.0% | Mean Rank: 3.88 +/- 1.91 | True Corr: 0.5070 vs Max Wrong: 0.5191
+  N = 80 traces | Rank 0 Success:  59.0% | Mean Rank: 3.05 +/- 1.66 | True Corr: 0.5019 vs Max Wrong: 0.4992
+  N = 100 traces | Rank 0 Success:  65.0% | Mean Rank: 1.06 +/- 0.41 | True Corr: 0.4986 vs Max Wrong: 0.4789
+
+[+] Saved CPA empirical results to: replication/phase7_real_hardware\pqm4_cpa_results.txt
+[+] Saved publication plot: replication/phase7_real_hardware\plots\pqm4_cpa_convergence.png
+================================================================================
+  [+] PHASE E CPA ATTACK REPRODUCTION COMPLETE
+================================================================================
+
+
+================================================================================
+Process exited with code: 0
+Elapsed time: 1.89 seconds
+================================================================================

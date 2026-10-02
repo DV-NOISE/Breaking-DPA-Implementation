@@ -1,0 +1,17 @@
+# Phase D: Second-Order Correlation Power Analysis on Masked mkm4
+# Target: STM32F407 (ARM Cortex-M4 @ 84 MHz), Magazin & Abdellatif ePrint 2026/1851
+# Ground Truth Secret: b[1] = 1422 (fixed_unmasked_key.npy)
+# Joint POI Window: Samples 292-304 (smoothed centered cross-product)
+# Candidate Space: 3329 hypotheses in Z_q
+# Evaluation: Independent Monte Carlo random subsampling (K=50 trials/N) & sequential progression
+N_traces   Seq_Rank   Rank0(%)   Mean_Rank    CI_Rank_95   Mean_rTrue   Mean_rWrong   
+50         299        0.0        1013.34      232.47       0.3101       0.5457        
+100        125        0.0        365.72       145.17       0.2731       0.3987        
+150        7          4.0        329.88       150.96       0.2433       0.3350        
+180        0          12.0       99.40        61.47        0.2498       0.3034        
+200        1          6.0        80.40        39.33        0.2402       0.2907        
+220        1          16.0       77.12        66.13        0.2421       0.2766        
+250        1          16.0       54.64        57.07        0.2345       0.2678        
+300        1          32.0       15.70        11.61        0.2275       0.2455        
+400        1          36.0       7.56         6.78         0.2239       0.2330        
+500        1          52.0       1.24         1.14         0.2243       0.2248        

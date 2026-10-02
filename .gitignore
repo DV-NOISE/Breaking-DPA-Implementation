@@ -22,3 +22,29 @@ ehthumbs.db
 temp_*.csv
 temp_*.txt
 scratch/
+
+# Compiled binaries and object files
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+
+# Datasets and large binary trace archives (over 50 GB)
+# Do NOT commit raw traces to GitHub (exceeds 100 MB file limit and 2 GB repo limit)
+datasets/*
+!datasets/d0nj0n_mlkem_dataset_sha256.txt
+!datasets/README.md
+!datasets/verify_sample_chunk.py
+!datasets/sample_hardware_chunk
+!datasets/sample_hardware_chunk/**
+
+# Zip archives
+*.zip
+
+# Personal, correspondence, and publication files (kept local, excluded from public repo)
+publication/
+*.eml
+
+

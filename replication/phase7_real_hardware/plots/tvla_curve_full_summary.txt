@@ -1,0 +1,21 @@
+FULL-DATASET TVLA CURVE AUDIT SUMMARY
+=================================================================
+N_fixed = 5000, N_variable = 5000, Total Samples = 10000
+Global Peak: |t| = 19.7574 at sample 2812
+Threshold |t| > 4.5000: 578 leaking points (5.78%)
+Bonferroni |t| > 4.5673: 557 leaking points (5.57%)
+
+Specific Window Characteristics:
+  1. Pre-Multiplication Baseline (Samples 150..220):
+     Peak |t| = 4.6311, Mean |t| = 2.1101, Sample 184 |t| = 0.4720
+     Note: Confirms sample 184 sits within noise floor; resolves draft clerical erratum.
+  2. Validated Negative-Control Quiet Window (Samples 900..920):
+     Peak |t| = 1.1079, Mean |t| = 0.5038 (0/21 samples > 4.5)
+     Note: Cited in MANUSCRIPT.md Section 5.2.1 for KS (p=0.1394) and binomial (p=0.7725) tests.
+
+Top Leakage Clusters:
+  1. Sample 2812: |t| = 19.7574
+  2. Sample 4688: |t| = 17.0693
+  3. Sample 4650: |t| = 16.0393
+  4. Sample 2775: |t| = 15.7114
+  5. Sample 2870: |t| = 12.4083

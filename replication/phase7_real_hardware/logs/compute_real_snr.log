@@ -1,0 +1,37 @@
+================================================================================
+EXECUTION LOG: compute_real_snr.py
+Timestamp:      2026-09-14 04:21:12 UTC
+Platform:       Windows-11-10.0.26200-SP0 (AMD64)
+Python Version: 3.13.2 (C:\Users\dev26\AppData\Local\Programs\Python\Python313\python.exe)
+Working Dir:    d:\new DPA
+Script Path:    d:\new DPA\replication\phase7_real_hardware\compute_real_snr.py
+Dataset Checksum:
+# Magazin & Abdellatif (ePrint 2026/1851) Dataset Archive
+# Source: https://pub-3483b4c265914de3a2a27c0a3b2076ee.r2.dev/d0nj0n_mlkem_dataset.zip
+# Size: 13494522554 bytes
+SHA256 (d0nj0n_mlkem_dataset.zip) = 4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143
+================================================================================
+
+===========================================================================
+  PHASE C: REAL-HARDWARE LEAKAGE CHARACTERIZATION & TVLA
+===========================================================================
+[*] Found live real-hardware dataset at: d:\new DPA\datasets\d0nj0n_mlkem_dataset\masked\100k_capture_all_2
+[*] Analyzing N=5000 traces across 10000 samples per share...
+[*] Computing Signal-to-Noise Ratio (SNR) for Share 0 (Mask M)...
+[*] Computing Signal-to-Noise Ratio (SNR) for Share 1 (sk - M)...
+[+] Share 0 (Mask M)   : Peak SNR = 0.9035 at sample index 510
+[+] Share 1 (sk - M)   : Peak SNR = 0.4332 at sample index 472
+[*] Computing fixed-vs-variable TVLA t-test (N_fixed=5000, N_var=5000)...
+[+] Fixed-vs-Variable TVLA: Peak |t| = 19.7574, Leaking points (|t|>4.5) = 578/10000
+[+] Saved SNR publication plot: replication/phase7_real_hardware\plots\snr_mkm4_shares.png
+[+] Saved Real-Hardware TVLA plot: replication/phase7_real_hardware\plots\tvla_real_hardware.png
+[+] Saved Phase C characterization report: replication/phase7_real_hardware\real_hardware_leakage_report.md
+===========================================================================
+  [+] PHASE C SNR & TVLA ANALYSIS COMPLETE
+===========================================================================
+
+
+================================================================================
+Process exited with code: 0
+Elapsed time: 2.55 seconds
+================================================================================

@@ -1,0 +1,30 @@
+# Phase D: Formal Negative Controls for Second-Order Masked CPA Scorer
+# Target Implementation: mkm4 (STM32F407, Magazin & Abdellatif ePrint 2026/1851)
+# Number of Trials: K = 100, Traces per Trial: N = 500
+# Candidate Space: q = 3329 in Z_q, Theoretical Uniform Mean: 1664.00
+
+CONTROL 1: Permuted Pairing (Trace i <-> Model pi(i)) at Active Window (Samples 290..310)
+Mean_Rank:        1595.01
+Median_Rank:      1459.00
+Rank0_Count:      0 / 100 (0.0%)
+Rank100_Count:    4 / 100 (4.0%)
+KS_Test_Cont_D:   0.0863
+KS_Test_Cont_P:   0.4221
+KS_Test_Disc_D:   0.0862
+KS_Test_Disc_P:   0.4229
+Binomial_Test_P:  0.5477
+Mean_r_true:      0.0828
+Mean_max_r_wrong: 0.1834
+
+CONTROL 2: Validated Quiet Off-Target Window (Samples 900..920)
+Mean_Rank:        1540.55
+Median_Rank:      1569.50
+Rank0_Count:      0 / 100 (0.0%)
+Rank100_Count:    2 / 100 (2.0%)
+KS_Test_Cont_D:   0.1137
+KS_Test_Cont_P:   0.1394
+KS_Test_Disc_D:   0.1136
+KS_Test_Disc_P:   0.1400
+Binomial_Test_P:  0.7725
+Mean_r_true:      0.0800
+Mean_max_r_wrong: 0.2068

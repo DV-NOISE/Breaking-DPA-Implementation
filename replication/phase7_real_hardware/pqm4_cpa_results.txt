@@ -1,0 +1,16 @@
+# Phase E: Correlation Power Analysis on pqm4 Unmasked Traces
+# Ground Truth Secret: a0=679, a1=1286 (mult_a_0.npy)
+# Target POI: Sample 1568 (Accumulator intermediate: a0*b0 + mont_red(a1*zeta0)*b1)
+# Trials per N: 50
+N_traces   Rank0_Rate(%)   Mean_Rank    CI_Rank_95   Corr_True    Corr_MaxWrong 
+10         12.0            20.18        6.94         0.5758       0.7890        
+15         10.0            14.44        5.38         0.5461       0.7033        
+20         30.0            8.02         3.71         0.5822       0.6636        
+25         28.0            8.24         4.13         0.5232       0.6037        
+30         26.0            10.54        4.79         0.5038       0.6094        
+35         34.0            11.34        5.67         0.4879       0.5515        
+40         38.0            4.80         2.43         0.5411       0.5805        
+50         52.0            3.90         2.68         0.5038       0.5075        
+60         56.0            3.18         3.10         0.5256       0.5147        
+80         58.0            3.60         2.72         0.4907       0.4925        
+100        68.0            0.70         0.34         0.5015       0.4728        

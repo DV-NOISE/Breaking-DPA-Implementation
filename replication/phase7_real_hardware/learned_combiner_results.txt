@@ -1,0 +1,15 @@
+# Phase F: Learned Combining Function vs Windowed Centered-Product Baseline
+# Target Secret: b[1] = 1422 (fixed_unmasked_key.npy)
+# Architecture: Two-Branch Neural Network (Input 11 -> Hidden 24 -> Output 1)
+# Evaluation: 50 Independent Monte Carlo Subsets per N & Sequential Progression
+N_traces   Seq_Base   Seq_ML     Base_R0(%)   Base_Mean    Base_CI    ML_R0(%)   ML_Mean    ML_CI     
+50         66         144        0.0          1036.66      229.55     0.0        392.60     136.23    
+100        31         44         0.0          572.98       199.09     10.0       178.52     127.88    
+150        2          10         2.0          730.42       254.74     12.0       54.32      45.52     
+180        0          0          4.0          871.92       295.06     32.0       12.54      7.81      
+200        1          0          0.0          869.14       312.56     20.0       15.20      13.24     
+220        1          0          2.0          820.82       304.98     24.0       8.32       5.38      
+250        1          0          2.0          681.78       289.76     28.0       7.72       5.51      
+300        1          1          2.0          689.26       315.64     48.0       2.30       1.29      
+400        1          1          8.0          1044.64      355.11     58.0       0.46       0.17      
+500        1          1          16.0         681.82       272.48     48.0       0.52       0.14      

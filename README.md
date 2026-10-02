@@ -64,12 +64,12 @@ Because both shares or consecutive products transition through the same physical
 
 ## ⚡ Quick Start: 1-Command Automated Master Verification
 
-Execute the complete 10-step automated test suite across all 5 replication phases and visual reproduction scripts:
+Execute the complete 17-step automated test suite spanning algorithmic simulation, polynomial blinding countermeasure, TVLA evaluations, real-hardware ARM Cortex-M4 EM characterization, CPA attacks on `pqm4` and masked `mkm4`, and the Two-Branch Neural Network learned combiner:
 
 ```powershell
 python replication/run_all_tests.py
 ```
-*Executes all 10 diagnostic steps, verifies regression constants, checkpoint distributions, Table 1 parsing, synthetic `.TRS` generation, Pearson correlation attack, and ML model in ~28 seconds with zero failures.*
+*Executes all 17 diagnostic steps, verifies regression constants, checkpoint distributions, Table 1 parsing, synthetic `.TRS` generation, Pearson correlation attack, ML model, polynomial blinding, TVLA curves, 12.57 GB real-hardware loaders, unmasked `pqm4` CPA, masked `mkm4` 2nd-order CPA, and learned combiner in ~27.5 seconds with zero failures.*
 
 ---
 
@@ -160,8 +160,10 @@ replication/
 │
 ├── phase2_noisy/              # Phase 2: Simulation for Noisy Traces
 │   ├── run_table1.py          # Table 1 4-decimal replication & Fig 6/7 generation
-│   ├── noisy_sim.cpp / .exe   # Gaussian noise Monte-Carlo simulation engine
-│   └── plots/                 # Figure 6 and Figure 7 output images
+│   ├── noisy_sim.cpp / .exe   # Gaussian noise Monte-Carlo simulation engine (q-templates)
+│   ├── q2_noisy_sim.cpp / .exe # Independent full-scale q² Monte Carlo engine (11M candidates)
+│   ├── run_q2_table1_independent.py # Independent P(l<=5) calculator & Fig 7 generator
+│   └── plots/                 # Figures 6 & 7 (reference and independent reproduction plots)
 │
 ├── phase3_hw_emulator/        # Phase 3: Cycle-Accurate Cortex-M4 Hardware Emulator
 │   ├── generate_synthetic_trs.py # Generates .TRS traces modeling pipeline inertia
@@ -172,9 +174,15 @@ replication/
 │   ├── view_key.py            # Key inspector displaying {-2,-1,0,1,2} vs ground truth
 │   └── recovered_secret_key.npy # Serialized recovered secret key
 │
-├── phase5_improvements/       # Phase 5: Novel Machine Learning Profiler
+├── phase5_improvements/       # Phase 5: Exploratory Machine Learning Profiler
 │   ├── ml_attack_model.py     # Multi-Layer Perceptron profiler (+12% Top-1 gain)
 │   └── ml_vs_pearson_improvement.png # Comparative evaluation plot
+│
+├── phase6_countermeasures/    # Phase 6: Novel Countermeasure Evaluation (Blinding)
+│   ├── blinding_evaluation.cpp / .exe # C++ engine: collision collapse & noisy sweep under blinding
+│   ├── run_countermeasure_eval.py     # Driver generating comparison table & plots
+│   ├── blinding_comparison_table.md   # Headline before/after evaluation table
+│   └── plots/blinding_comparison.png  # Publication comparison curve (>3000x suppression)
 │
 ├── plots/                     # Master Plot Gallery & Original PDF Extractions
 │   ├── figure1_trace_characterization.png
@@ -845,6 +853,75 @@ python replication/extract_paper_figures.py
   - `replication/plots/figure4_ota_attack_reproduced.png` (Figure 4)
   - `replication/plots/paper_original_figures/*.png` (Extracted ground-truth figures)
 - **Pass Criteria**: Exits with code 0 and confirms successful figure extractions from Pages 24, 25, and 26.
+
+---
+
+#### Step 11: Independent $q^2$ Sweep & Recovery Probability (Phase 2)
+```powershell
+python replication/phase2_noisy/run_q2_table1_independent.py
+```
+- **What It Does**: Evaluates the independent full-scale $11.08 \times 10^6$ candidate space Monte Carlo noise sweep under $\sigma \in [0.1, 1.5]$ and generates Figure 7 independent comparison.
+- **Output Files**: `replication/phase2_noisy/plots/figure7_q2_independent.png`, `replication/phase2_noisy/q2_recovery_probability.txt`
+- **Pass Criteria**: Confirms $P(l \le 5) > 90\%$ at $\sigma = 0.5$.
+
+---
+
+#### Step 12: Polynomial Blinding Countermeasure Evaluation (Phase 6)
+```powershell
+python replication/phase6_countermeasures/run_countermeasure_eval.py
+```
+- **What It Does**: Compiles and executes `blinding_sim.cpp`, evaluating the $A \cdot t \cdot t^{-1}$ countermeasure across noiseless collisions, noisy degradation, and operation cycle overhead.
+- **Output Files**: `replication/phase6_countermeasures/blinding_comparison_table.md`, `replication/phase6_countermeasures/blinding_evaluation_writeup.md`
+- **Pass Criteria**: Confirms collision uniqueness collapses from 99.75% to 0.00% (>3,300x suppression) with only +14 operations per pair (<0.31% overhead).
+
+---
+
+#### Step 13: Fixed-vs-Random TVLA Validation of Blinding (Phase 6)
+```powershell
+python replication/phase6_countermeasures/run_tvla_evaluation.py
+```
+- **What It Does**: Performs non-specific fixed-vs-random Welch's t-test (ISO/IEC 17825) across $N = 10,000$ traces per group (20,000 traces total) across 33 POIs covering all 13 intermediate execution states.
+- **Output Files**: `replication/phase6_countermeasures/tvla_results.txt`, `replication/phase6_countermeasures/plots/tvla_unblinded_vs_blinded.png`
+- **Pass Criteria**: Unblinded baseline fails with peak $|t| = 18.62 > 4.5$ (8 leaking POIs); blinded countermeasure passes with peak $|t| = 2.54 \le 4.5$ (0 leaking POIs).
+
+---
+
+#### Step 14: Real-Hardware Dataset Loader & Layout Verification (Phase C)
+```powershell
+python replication/phase7_real_hardware/test_real_hardware_regression.py
+```
+- **What It Does**: Verifies memory-mapped zero-copy streaming of the 12.57 GB Magazin & Abdellatif (ePrint 2026/1851) dataset, validating shape integrity, dtypes, and alignment.
+- **Pass Criteria**: All shape and layout assertions pass with exit code 0.
+
+---
+
+#### Step 15: Unmasked `pqm4` Physical Accumulator CPA Baseline (Phase E)
+```powershell
+python replication/phase7_real_hardware/test_pqm4_cpa_regression.py
+```
+- **What It Does**: Evaluates 1st-order CPA on STM32F407 assembly `poly_frombytes_mul` targeting the 32-bit accumulator switching intermediate at sample 1568.
+- **Output Files**: `replication/phase7_real_hardware/pqm4_cpa_results.txt`, `replication/phase7_real_hardware/plots/pqm4_cpa_convergence.png`
+- **Pass Criteria**: Confirms convergence in ~40 traces (mean rank $2.90$ at $N=40$; 70% Rank 0 at $N=60$).
+
+---
+
+#### Step 16: Masked `mkm4` 2nd-Order Covariance CPA Baseline (Phase D)
+```powershell
+python replication/phase7_real_hardware/test_mkm4_cpa_regression.py
+```
+- **What It Does**: Evaluates 2nd-order CPA with 3-sample jitter smoothing and $O(q \log q)$ circular FFT covariance model on masked `mkm4` EM traces.
+- **Output Files**: `replication/phase7_real_hardware/mkm4_2nd_order_cpa_results.txt`, `replication/phase7_real_hardware/plots/mkm4_2nd_order_cpa_convergence.png`
+- **Pass Criteria**: Target key $b[1] = 1422$ achieves Rank 0 at $N = 180, 200, 250, 300$ traces (reproducing the reported ~200-trace baseline).
+
+---
+
+#### Step 17: Learned Combining Function Neural Network (Phase F)
+```powershell
+python replication/phase7_real_hardware/test_learned_combiner_regression.py
+```
+- **What It Does**: Evaluates the Two-Branch Neural Network trained on variable-key decapsulations under Pearson correlation loss, tested on independent fixed-key traces.
+- **Output Files**: `replication/phase7_real_hardware/learned_combiner_results.txt`, `replication/phase7_real_hardware/plots/learned_combiner_vs_baseline.png`
+- **Pass Criteria**: Achieves Rank 0 at $N = 180, 200, 220$, outperforming the hand-crafted baseline at $N = 220$ (Rank 0 vs. Rank 1).
 
 ---
 

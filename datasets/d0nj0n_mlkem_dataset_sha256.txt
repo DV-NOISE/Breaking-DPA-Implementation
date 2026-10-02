@@ -1,0 +1,4 @@
+# Magazin & Abdellatif (ePrint 2026/1851) Dataset Archive
+# Source: https://pub-3483b4c265914de3a2a27c0a3b2076ee.r2.dev/d0nj0n_mlkem_dataset.zip
+# Size: 13494522554 bytes
+SHA256 (d0nj0n_mlkem_dataset.zip) = 4eed0b61b028f91b0d2568b04baabcca6a4a3dbb450cd3613e2fc01f3fd20143
